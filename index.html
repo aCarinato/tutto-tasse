@@ -1,0 +1,50 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calcolatore tasse acquisto casa</title>
+    <link rel="stylesheet" href="styles.css">
+    <!-- <script src="script.js"></script> -->
+</head>
+
+<body>
+    <header>
+        <h1>Dimmi quante ne vuoi, se ne vuoi...</h1>
+    </header>
+   
+    <div class="container">
+        <form action="">
+            <div class="form-row">
+                <div class="col-25">
+                    <label for="tipo-abitazione">Tipologia: </label>
+                </div>
+                <div class="col-75">
+                    <select name="tipo-abitazione" id="tipo-abitazione" required >
+                        <option value="tipo-abitazione-disabled" disabled selected value>-- Tipologia di Abitazione --</option>
+                        <option value="prima-casa">Prima Casa</option>
+                        <option value="seconda-casa">Seconda Casa</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="col-25">
+                    <label for="tipo-venditore">Acquisto da: </label>
+                </div>
+                <div class="col-75">
+                    <select name="tipo-venditore" id="tipo-venditore" required>
+                        <option value="tipo-venditore-disabled" disabled selected>-- Tipologia di Venditore --</option>
+                        <option value="venditore-privato">Privato</option>
+                        <option value="venditore-impresa">Impresa</option>
+                    </select>
+                </div>
+            </div>
+        </form>
+        <!-- <button id="btn-calc">Calculate</button> -->
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+
+</html>

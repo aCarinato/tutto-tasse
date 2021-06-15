@@ -1,0 +1,139 @@
+* {
+    /* sets how the total width and height of an element is calculated */
+    box-sizing: border-box;
+}
+
+body {
+    text-align: center;
+}
+
+input[type=number], select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    resize: vertical;
+}
+
+label {
+    padding: 0.75rem 0.75rem 0.75rem 0;
+    /* display: inline-block; */
+}
+
+button {
+    background-color: #04AA6D;
+    color: white;
+    padding: 0.75rem 2rem;
+    border: none;
+    border-radius: 0.25rem;
+    cursor: pointer;
+    /* float: right; */
+    margin-top: 0.25rem;
+}
+
+p {
+    text-align: right;
+    /* padding-right: 2rem; */
+}
+
+.container {
+    width: 30%;
+    margin: auto;
+    border-radius: 0.25rem;
+    background-color: #f2f2f2;
+    padding: 1.25rem;
+}
+
+.split {
+    display: flex;
+    justify-content: space-between;
+    height: 2rem;
+    align-items: center;
+}
+
+.col-25 {
+    /* float: left; */
+    text-align: left;
+    width: 30%;
+    margin-top: .25rem;
+    display: inline-block;
+}
+
+.col-75 {
+    /* float: left; */
+    width: 69%;
+    margin-top: .25rem;
+    display: inline-block;
+}
+
+.div-btn-calc {
+    margin: 1.5rem 0;
+}
+
+/* .row-summ {
+    width: 100%;
+    margin: auto;
+} */
+
+/* .col-25-summ {
+    width: 30%;
+    text-align: left;
+    display: inline-block;
+}
+
+.col-75-summ {
+    width: 69%;
+    text-align: right;
+    display: inline-block;
+} */
+
+/* .result-table {
+    margin: 20px auto;
+} */
+
+#div-results {
+    width: 20%;
+}
+
+/* td, th {
+    padding: 0.5rem;
+}
+
+.for-valore-catastale {
+    margin-top: 20px;
+}
+
+.result-table {
+    margin: 20px auto;
+}
+
+.td-amount {
+    text-align: right;
+} */
+
+
+/* Clear floats after the columns */
+/* .row::after {
+content: "";
+display: table;
+clear: both;
+} */
+
+#btn-calc:hover {
+    background-color: #45a049;
+}
+
+@media screen and (max-width: 1024px) {
+    .container {
+        width: 90%;
+    }
+
+    .col-25, .col-75, input[type=submit] {
+        width: 100%;
+    }
+
+    #div-results {
+        width: 90%;
+    }
+
+}
