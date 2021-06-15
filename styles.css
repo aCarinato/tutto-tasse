@@ -95,6 +95,7 @@ p {
     width: 90%;
     margin: 20px auto;
     font-size: 1rem;
+    border-collapse: collapse;
 }
 
 #div-results {
@@ -121,7 +122,7 @@ td, th {
 
 .row-total-amt {
     font-weight: bold;
-    border: 1px solid #999;
+    border-top: 1px solid #999;
     /* border: 1px solid black; */
 }
 
