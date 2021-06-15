@@ -80,49 +80,74 @@ class Calculator {
         containerTableResults.classList.add('container')
         containerTableResults.setAttribute('id', 'div-results')
 
+        // containerTableResults.innerHTML = `
+        //     <h2>Riassunto Spese</h2>
+        //     <div class="split">
+        //         <div>
+        //             <p>Imposta di Registro:</p>
+        //         </div>
+        //         <div>
+        //             <p>${impostaRegistro} €</p>
+        //         </div>
+        //     </div>
+        //     <div class="split">
+        //         <div>
+        //             <p>Imposta Catastale:</p>
+        //         </div>
+        //         <div>
+        //             <p>${impostaCatastale} €</p>
+        //         </div>
+        //     </div>
+        //     <div class="split">
+        //         <div>
+        //             <p>Imposta Ipotecaria:</p>
+        //         </div>
+        //         <div>
+        //             <p>${impostaIpotecaria} €</p>
+        //         </div>
+        //     </div>
+        //     <div class="split">
+        //         <div>
+        //             <p>IVA:</p>
+        //         </div>
+        //         <div>
+        //             <p>${IVA} €</p>
+        //         </div>
+        //     </div>
+        //     <br>
+        //     <div class="split" style="font-weight:bold">
+        //         <div>
+        //             <p>Totale:</p>
+        //         </div>
+        //         <div>
+        //             <p>${totaleImposte} €</p>
+        //         </div>
+        //     </div>
+        // `
+
         containerTableResults.innerHTML = `
-            <h2>Riassunto Spese</h2>
-            <div class="split">
-                <div>
-                    <p>Imposta di Registro:</p>
-                </div>
-                <div>
-                    <p>${impostaRegistro} €</p>
-                </div>
-            </div>
-            <div class="split">
-                <div>
-                    <p>Imposta Catastale:</p>
-                </div>
-                <div>
-                    <p>${impostaCatastale} €</p>
-                </div>
-            </div>
-            <div class="split">
-                <div>
-                    <p>Imposta Ipotecaria:</p>
-                </div>
-                <div>
-                    <p>${impostaIpotecaria} €</p>
-                </div>
-            </div>
-            <div class="split">
-                <div>
-                    <p>IVA:</p>
-                </div>
-                <div>
-                    <p>${IVA} €</p>
-                </div>
-            </div>
-            <br>
-            <div class="split" style="font-weight:bold">
-                <div>
-                    <p>Totale:</p>
-                </div>
-                <div>
-                    <p>${totaleImposte} €</p>
-                </div>
-            </div>
+            <table class="result-table">
+                <tr>
+                    <td>Imposta di Registro:</td>
+                    <td class="td-amount">${impostaRegistro} €</td>
+                </tr>
+                <tr>
+                    <td>Imposta Catastale:</td>
+                    <td class="td-amount">${impostaCatastale} €</td>
+                </tr>
+                <tr>
+                    <td>Imposta Ipotecaria:</td>
+                    <td class="td-amount">${impostaIpotecaria} €</td>
+                </tr>
+                <tr>
+                    <td>IVA:</td>
+                    <td class="td-amount">${IVA} €</td>
+                </tr>
+                <tr class="row-total-amt">
+                    <td>Totale:</td>
+                    <td class="td-amount">${totaleImposte} €</td>
+                </tr>
+            </table>
         `
 
         const body = document.body

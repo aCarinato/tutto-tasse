@@ -5,6 +5,7 @@
 
 body {
     text-align: center;
+    font-family:Arial, Helvetica, sans-serif;
 }
 
 input[type=number], select {
@@ -13,10 +14,12 @@ input[type=number], select {
     border: 1px solid #ccc;
     border-radius: .25rem;
     resize: vertical;
+    font-size: 1rem;
 }
 
 label {
     padding: 0.75rem 0.75rem 0.75rem 0;
+    font-size: 1rem;
     /* display: inline-block; */
 }
 
@@ -29,6 +32,7 @@ button {
     cursor: pointer;
     /* float: right; */
     margin-top: 0.25rem;
+    font-size: 1rem;
 }
 
 p {
@@ -87,16 +91,19 @@ p {
     display: inline-block;
 } */
 
-/* .result-table {
+.result-table {
+    width: 90%;
     margin: 20px auto;
-} */
-
-#div-results {
-    width: 20%;
+    font-size: 1rem;
 }
 
-/* td, th {
+#div-results {
+    width: 25%;
+}
+
+td, th {
     padding: 0.5rem;
+    /* border: 1px solid #999; */
 }
 
 .for-valore-catastale {
@@ -104,12 +111,19 @@ p {
 }
 
 .result-table {
-    margin: 20px auto;
+    margin: 1rem auto;
 }
 
 .td-amount {
+    width: 40%;
     text-align: right;
-} */
+}
+
+.row-total-amt {
+    font-weight: bold;
+    border: 1px solid #999;
+    /* border: 1px solid black; */
+}
 
 
 /* Clear floats after the columns */
@@ -136,4 +150,10 @@ clear: both;
         width: 90%;
     }
 
+}
+
+@media screen and (max-width: 352px) {
+    html {
+        font-size: 0.75rem;
+    }
 }
