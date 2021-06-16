@@ -20,11 +20,14 @@
                     <label for="tipo-abitazione">Tipologia: </label>
                 </div>
                 <div class="col-75">
-                    <select name="tipo-abitazione" id="tipo-abitazione" required >
-                        <option value="tipo-abitazione-disabled" disabled selected value>-- Tipologia di Abitazione --</option>
-                        <option value="prima-casa">Prima Casa</option>
-                        <option value="seconda-casa">Seconda Casa</option>
-                    </select>
+                    <div>
+                        <input type="radio" id="prima-casa" name="tipo-abitazione" value="prima-casa">
+                        <label for="prima-casa">Prima Casa</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="seconda-casa" name="tipo-abitazione" value="seconda-casa">
+                        <label for="seconda-casa">Seconda Casa</label>
+                    </div>
                 </div>
             </div>
             <div class="form-row">
@@ -32,11 +35,15 @@
                     <label for="tipo-venditore">Acquisto da: </label>
                 </div>
                 <div class="col-75">
-                    <select name="tipo-venditore" id="tipo-venditore" required>
-                        <option value="tipo-venditore-disabled" disabled selected>-- Tipologia di Venditore --</option>
-                        <option value="venditore-privato">Privato</option>
-                        <option value="venditore-impresa">Impresa</option>
-                    </select>
+
+                    <div>
+                        <input type="radio" id="venditore-privato" name="tipo-venditore" value="venditore-privato">
+                        <label for="venditore-privato">Privato</label>
+                    </div>
+                    <div>
+                        <input type="radio" id="venditore-impresa" name="tipo-venditore" value="venditore-impresa">
+                        <label for="venditore-impresa">Impresa</label>
+                    </div>
                 </div>
             </div>
         </form>

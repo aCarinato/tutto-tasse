@@ -48,6 +48,12 @@ p {
     padding: 1.25rem;
 }
 
+/* FORM */
+
+.form-row {
+    margin: 1rem auto;
+}
+
 .split {
     display: flex;
     justify-content: space-between;
@@ -57,15 +63,17 @@ p {
 
 .col-25 {
     /* float: left; */
+    vertical-align: top;
     text-align: left;
-    width: 30%;
+    width: 40%;
     margin-top: .25rem;
     display: inline-block;
 }
 
 .col-75 {
     /* float: left; */
-    width: 69%;
+    text-align: left;
+    width: 59%;
     margin-top: .25rem;
     display: inline-block;
 }
@@ -73,23 +81,6 @@ p {
 .div-btn-calc {
     margin: 1.5rem 0;
 }
-
-/* .row-summ {
-    width: 100%;
-    margin: auto;
-} */
-
-/* .col-25-summ {
-    width: 30%;
-    text-align: left;
-    display: inline-block;
-}
-
-.col-75-summ {
-    width: 69%;
-    text-align: right;
-    display: inline-block;
-} */
 
 .result-table {
     width: 90%;
