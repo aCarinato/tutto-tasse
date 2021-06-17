@@ -15,22 +15,24 @@
    
     <div class="container">
         <form action="">
-            <div class="form-row">
-                <div class="col-25">
-                    <label for="tipo-abitazione">Tipologia: </label>
-                </div>
-                <div class="col-75">
-                    <div>
-                        <input type="radio" id="prima-casa" name="tipo-abitazione" value="prima-casa">
-                        <label for="prima-casa">Prima Casa</label>
+            <!-- <div class="form-row"> -->
+                <fieldset>
+                    <div class="col-25">
+                        <label for="tipo-abitazione">Tipologia: </label>
                     </div>
-                    <div>
-                        <input type="radio" id="seconda-casa" name="tipo-abitazione" value="seconda-casa">
-                        <label for="seconda-casa">Seconda Casa</label>
+                    <div class="col-75">
+                        <div>
+                            <input type="radio" id="prima-casa" name="tipo-abitazione" value="prima-casa">
+                            <label for="prima-casa">Prima Casa</label>
+                        </div>
+                        <div>
+                            <input type="radio" id="seconda-casa" name="tipo-abitazione" value="seconda-casa">
+                            <label for="seconda-casa">Seconda Casa</label>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="form-row">
+                </fieldset>
+            <!-- </div> -->
+            <fieldset>
                 <div class="col-25">
                     <label for="tipo-venditore">Acquisto da: </label>
                 </div>
@@ -45,7 +47,10 @@
                         <label for="venditore-impresa">Impresa</label>
                     </div>
                 </div>
-            </div>
+            </fieldset>
+            <!-- <div class="form-row">
+
+            </div> -->
         </form>
         <!-- <button id="btn-calc">Calculate</button> -->
     </div>

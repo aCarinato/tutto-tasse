@@ -170,7 +170,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         if (seller === 'venditore-privato') {
     
             // Create input for valore catastale
-            const inputValoreCatastale = document.createElement('div')
+            const inputValoreCatastale = document.createElement('fieldset')
             inputValoreCatastale.classList.add('form-row-money')
     
             inputValoreCatastale.innerHTML = `
@@ -196,7 +196,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         } else if (seller === 'venditore-impresa') {
     
             // Create input for 'prezzo di acquisto'
-            const inputPrezzoAcquisto = document.createElement('div')
+            const inputPrezzoAcquisto = document.createElement('fieldset')
             inputPrezzoAcquisto.classList.add('form-row-money')
     
             inputPrezzoAcquisto.innerHTML = `
@@ -242,6 +242,8 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             btnCalc.addEventListener('click', e => {
                 calculator.compute()
                 // calculator.displayResult()
+                // TODO: add treatment when some input field is left empty
+                // TODO: add treatment when the input price starts with a '0'
             })
         }
 }))
