@@ -80,51 +80,6 @@ class Calculator {
         containerTableResults.classList.add('container')
         containerTableResults.setAttribute('id', 'div-results')
 
-        // containerTableResults.innerHTML = `
-        //     <h2>Riassunto Spese</h2>
-        //     <div class="split">
-        //         <div>
-        //             <p>Imposta di Registro:</p>
-        //         </div>
-        //         <div>
-        //             <p>${impostaRegistro} €</p>
-        //         </div>
-        //     </div>
-        //     <div class="split">
-        //         <div>
-        //             <p>Imposta Catastale:</p>
-        //         </div>
-        //         <div>
-        //             <p>${impostaCatastale} €</p>
-        //         </div>
-        //     </div>
-        //     <div class="split">
-        //         <div>
-        //             <p>Imposta Ipotecaria:</p>
-        //         </div>
-        //         <div>
-        //             <p>${impostaIpotecaria} €</p>
-        //         </div>
-        //     </div>
-        //     <div class="split">
-        //         <div>
-        //             <p>IVA:</p>
-        //         </div>
-        //         <div>
-        //             <p>${IVA} €</p>
-        //         </div>
-        //     </div>
-        //     <br>
-        //     <div class="split" style="font-weight:bold">
-        //         <div>
-        //             <p>Totale:</p>
-        //         </div>
-        //         <div>
-        //             <p>${totaleImposte} €</p>
-        //         </div>
-        //     </div>
-        // `
-
         containerTableResults.innerHTML = `
             <table class="result-table">
                 <tr>
@@ -164,23 +119,6 @@ class Calculator {
         })
     }
 
-    // removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange) {
-    //     // remove the previous input field, either for 'rendita catastale' or 'prezzo acquisto'
-    //     if (formRowMoneyExists !== null) {
-    //         formRowMoneyExists.remove()
-    //     }
-
-        // // remove the summary table previously created, if existent
-        // if (containerTableResultsExists !== null) {
-        //     containerTableResultsExists.remove()
-        // }
-
-        // // remove the button to run the calculation
-        // if (btnCalcExistsOnChange !== null) {
-        //     btnCalcExistsOnChange.remove()
-        // }
-    // }
-
     // Reset all values and fields
     resetCalc() {
         const resultExists = document.getElementById('div-results')
@@ -189,9 +127,12 @@ class Calculator {
             resultExists.remove()
         }
 
-        // Dropdown selection
-        document.getElementById('tipo-abitazione').value = 'tipo-abitazione-disabled'
-        document.getElementById('tipo-venditore').value = 'tipo-venditore-disabled'
+        const selectedHouseTypeReset = document.querySelectorAll('input[type=radio][name="tipo-abitazione"]')
+        const selectedSellerTypeReset = document.querySelectorAll('input[type=radio][name="tipo-venditore"]')
+
+        // uncheck all radio options
+        selectedHouseTypeReset.forEach(radio => radio.checked = false)
+        selectedSellerTypeReset.forEach(radio => radio.checked = false)
 
         // Input price (valore catastale or prezzo acquisto) and label
         document.querySelector('.form-row-money').remove()
@@ -199,109 +140,110 @@ class Calculator {
     }
 }
 
-const selectedHouseType = document.getElementById("tipo-abitazione")
-const selectedSellerType = document.getElementById("tipo-venditore")
+const selectedHouseType = document.querySelectorAll('input[type=radio][name="tipo-abitazione"]')
+const selectedSellerType = document.querySelectorAll('input[type=radio][name="tipo-venditore"]')
 
 const calculator = new Calculator(selectedHouseType, selectedSellerType, 0, 0) // valoreCatastale and prezzoAcquisto set to 0 just for initialisation
 
-selectedHouseType.addEventListener('change', e => {
+selectedHouseType.forEach(radio => radio.addEventListener('change', e => {
+    console.log(radio.value)
 
-    house = e.target.value
+    house = radio.value
 
     calculator.selectHouseType(house)
-})
 
-selectedSellerType.addEventListener('change', e => {
+}))
 
-    seller = e.target.value
+selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
+    seller = radio.value
 
-    // Check what elements already exists in the DOM
     const containerTableResultsExists = document.getElementById('div-results')
-    const formRowMoneyExists = document.querySelector('.form-row-money')
-    const btnCalcExistsOnChange = document.querySelector('.div-btn-calc')
-
-    // calculator.removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange)
-    if (formRowMoneyExists !== null) {
-        formRowMoneyExists.remove()
-    }
-
+        const formRowMoneyExists = document.querySelector('.form-row-money')
+        const btnCalcExistsOnChange = document.querySelector('.div-btn-calc')
     
-    if (seller === 'venditore-privato') {
-
-        // Create input for valore catastale
-        const inputValoreCatastale = document.createElement('div')
-        inputValoreCatastale.classList.add('form-row-money')
-
-        inputValoreCatastale.innerHTML = `
-            <div class="col-25">
-                <label for="valore-catastale">Valore Catastale</label>
-            </div>
-            <div class="col-75">
-                <input type="number" name="valore-catastale" id="valore-catastale" min="0">
-            </div>
-        `
-
-        const form = document.querySelector('form')
-        form.append(inputValoreCatastale)
-
-        // Get inputted valore catastale
-        inputValoreCatastale.addEventListener('input', e => {
-
-            price = parseFloat(e.target.value)
-
-            calculator.setValoreCatastale(price)
-        })
-
-    } else if (seller === 'venditore-impresa') {
-
-        // Create input for 'prezzo di acquisto'
-        const inputPrezzoAcquisto = document.createElement('div')
-        inputPrezzoAcquisto.classList.add('form-row-money')
-
-        inputPrezzoAcquisto.innerHTML = `
-            <div class="col-25">
-                <label for="prezzo-acquisto">Prezzo Acquisto</label>
-            </div>
-            <div class="col-75">
-                <input type="number" name="prezzo-acquisto" id="prezzo-acquisto" min="0">
-            </div>
-        `
-
-        const form = document.querySelector('form')
-        form.append(inputPrezzoAcquisto)
-
-        // Get inputted prezzo acquisto
-        inputPrezzoAcquisto.addEventListener('input', e => {
-
-            price = parseFloat(e.target.value)
-
-            calculator.setPrezzoAcquisto(price)
-        })
-    }
-
-    calculator.selectSellerType(seller)
-   
-    const btnCalcExists = document.querySelector('.div-btn-calc')
-
-    if (btnCalcExists === null) {
-
-        // Add button to run calculation
-        const divBtnCalc = document.createElement('div')
-        divBtnCalc.classList.add('div-btn-calc')
-        divBtnCalc.innerHTML = `
-            <button id="btn-calc">Calcola</button>
-        `
+        // calculator.removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange)
+        if (formRowMoneyExists !== null) {
+            formRowMoneyExists.remove()
+        }
     
-        const body = document.body
+        
+        if (seller === 'venditore-privato') {
     
-        body.append(divBtnCalc)
+            // Create input for valore catastale
+            const inputValoreCatastale = document.createElement('fieldset')
+            inputValoreCatastale.classList.add('form-row-money')
     
-        const btnCalc = document.getElementById('btn-calc')
+            inputValoreCatastale.innerHTML = `
+                <div class="col-25">
+                    <label for="valore-catastale">Valore Catastale</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" name="valore-catastale" id="valore-catastale" min="0">
+                </div>
+            `
     
-        btnCalc.addEventListener('click', e => {
-            calculator.compute()
-            // calculator.displayResult()
-        })
-    }
-
-})
+            const form = document.querySelector('form')
+            form.append(inputValoreCatastale)
+    
+            // Get inputted valore catastale
+            inputValoreCatastale.addEventListener('input', e => {
+    
+                price = parseFloat(e.target.value)
+    
+                calculator.setValoreCatastale(price)
+            })
+    
+        } else if (seller === 'venditore-impresa') {
+    
+            // Create input for 'prezzo di acquisto'
+            const inputPrezzoAcquisto = document.createElement('fieldset')
+            inputPrezzoAcquisto.classList.add('form-row-money')
+    
+            inputPrezzoAcquisto.innerHTML = `
+                <div class="col-25">
+                    <label for="prezzo-acquisto">Prezzo Acquisto</label>
+                </div>
+                <div class="col-75">
+                    <input type="number" name="prezzo-acquisto" id="prezzo-acquisto" min="0">
+                </div>
+            `
+    
+            const form = document.querySelector('form')
+            form.append(inputPrezzoAcquisto)
+    
+            // Get inputted prezzo acquisto
+            inputPrezzoAcquisto.addEventListener('input', e => {
+    
+                price = parseFloat(e.target.value)
+    
+                calculator.setPrezzoAcquisto(price)
+            })
+        }
+    
+        calculator.selectSellerType(seller)
+       
+        const btnCalcExists = document.querySelector('.div-btn-calc')
+    
+        if (btnCalcExists === null) {
+    
+            // Add button to run calculation
+            const divBtnCalc = document.createElement('div')
+            divBtnCalc.classList.add('div-btn-calc')
+            divBtnCalc.innerHTML = `
+                <button id="btn-calc">Calcola</button>
+            `
+        
+            const body = document.body
+        
+            body.append(divBtnCalc)
+        
+            const btnCalc = document.getElementById('btn-calc')
+        
+            btnCalc.addEventListener('click', e => {
+                calculator.compute()
+                // calculator.displayResult()
+                // TODO: add treatment when some input field is left empty
+                // TODO: add treatment when the input price starts with a '0'
+            })
+        }
+}))
