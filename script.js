@@ -1,3 +1,7 @@
+// TODO: add treatment when some input field is left empty
+// TODO: add treatment when the input price starts with a '0'
+// TODO: add explanation (link other page) for valore catastale
+
 class Calculator {
     constructor(houseType, sellerType, valoreCatastale, prezzoAcquisto) {
         this.houseType = houseType
@@ -242,8 +246,6 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             btnCalc.addEventListener('click', e => {
                 calculator.compute()
                 // calculator.displayResult()
-                // TODO: add treatment when some input field is left empty
-                // TODO: add treatment when the input price starts with a '0'
             })
         }
 }))
