@@ -1,13 +1,13 @@
 // TODO: add treatment when some input field is left empty
 // TODO: add treatment when the input price starts with a '0'
+// TODO: replace radio-button with segment control
 // TODO: add explanation (link other page) for valore catastale
 
 class Calculator {
-    constructor(houseType, sellerType, valoreCatastale, prezzoAcquisto) {
+    constructor(houseType, sellerType, amountValue) {
         this.houseType = houseType
         this.sellerType = sellerType
-        this.valoreCatastale = valoreCatastale
-        this.prezzoAcquisto = prezzoAcquisto
+        this.amountValue = amountValue
     }
 
     selectHouseType(house) {
@@ -18,19 +18,18 @@ class Calculator {
         this.sellerType = seller
     }
 
-    setValoreCatastale(price) {
-        this.valoreCatastale = price
-    }
-
-    setPrezzoAcquisto(price) {
-        this.prezzoAcquisto = price
+    setAmountValue(price) {
+        this.amountValue = price
     }
 
     compute() {
-        if (typeof this.valoreCatastale === 'number') {
+        // if (typeof this.amountValue === 'number') {
+        //      console.log(this.amountValue > 0.0)
+        if (this.amountValue > 0.0) {
+            console.log(this.amountValue)
             if (this.houseType === 'prima-casa' && this.sellerType === 'venditore-privato') {
 
-                const impostaRegistro = 0.02 * this.valoreCatastale // euro
+                const impostaRegistro = 0.02 * this.amountValue // euro
                 const impostaCatastale = 50 // euro
                 const impostaIpotecaria = 50 // euro
                 const IVA = 0  // euro
@@ -43,14 +42,14 @@ class Calculator {
                 const impostaRegistro = 200 // euro
                 const impostaCatastale = 200 // euro
                 const impostaIpotecaria = 200 // euro
-                const IVA = 0.04 * this.prezzoAcquisto  // euro
+                const IVA = 0.04 * this.amountValue  // euro
 
                 const totaleImposte = parseFloat(impostaRegistro + impostaCatastale + impostaIpotecaria + IVA)
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
 
             } else if (this.houseType === 'seconda-casa' && this.sellerType === 'venditore-privato') {
-                const impostaRegistro = 0.09 * this.valoreCatastale // euro
+                const impostaRegistro = 0.09 * this.amountValue // euro
                 const impostaCatastale = 50 // euro
                 const impostaIpotecaria = 50 // euro
                 const IVA = 0  // euro
@@ -63,7 +62,7 @@ class Calculator {
                 const impostaRegistro = 200 // euro
                 const impostaCatastale = 200 // euro
                 const impostaIpotecaria = 200 // euro
-                const IVA = 0.1 * this.prezzoAcquisto  // euro
+                const IVA = 0.1 * this.amountValue  // euro
 
                 const totaleImposte = parseFloat(impostaRegistro + impostaCatastale + impostaIpotecaria + IVA)
 
@@ -138,6 +137,9 @@ class Calculator {
         selectedHouseTypeReset.forEach(radio => radio.checked = false)
         selectedSellerTypeReset.forEach(radio => radio.checked = false)
 
+        // set the amount to zero
+        calculator.setAmountValue(0)
+
         // Input price (valore catastale or prezzo acquisto) and label
         document.querySelector('.form-row-money').remove()
         document.querySelector('.div-btn-calc').remove()
@@ -147,7 +149,7 @@ class Calculator {
 const selectedHouseType = document.querySelectorAll('input[type=radio][name="tipo-abitazione"]')
 const selectedSellerType = document.querySelectorAll('input[type=radio][name="tipo-venditore"]')
 
-const calculator = new Calculator(selectedHouseType, selectedSellerType, 0, 0) // valoreCatastale and prezzoAcquisto set to 0 just for initialisation
+const calculator = new Calculator(selectedHouseType, selectedSellerType, 0) // amountValue and amountValue set to 0 just for initialisation
 
 selectedHouseType.forEach(radio => radio.addEventListener('change', e => {
     console.log(radio.value)
@@ -162,22 +164,22 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
     seller = radio.value
 
     const containerTableResultsExists = document.getElementById('div-results')
-        const formRowMoneyExists = document.querySelector('.form-row-money')
-        const btnCalcExistsOnChange = document.querySelector('.div-btn-calc')
-    
-        // calculator.removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange)
-        if (formRowMoneyExists !== null) {
-            formRowMoneyExists.remove()
-        }
-    
-        
-        if (seller === 'venditore-privato') {
-    
-            // Create input for valore catastale
-            const inputValoreCatastale = document.createElement('fieldset')
-            inputValoreCatastale.classList.add('form-row-money')
-    
-            inputValoreCatastale.innerHTML = `
+    const formRowMoneyExists = document.querySelector('.form-row-money')
+    const btnCalcExistsOnChange = document.querySelector('.div-btn-calc')
+
+    // calculator.removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange)
+    if (formRowMoneyExists !== null) {
+        calculator.setAmountValue(0)
+        formRowMoneyExists.remove()
+    }
+
+    if (seller === 'venditore-privato') {
+
+        // Create input for valore catastale
+        const inputValoreCatastale = document.createElement('fieldset')
+        inputValoreCatastale.classList.add('form-row-money')
+
+        inputValoreCatastale.innerHTML = `
                 <div class="col-25">
                     <label for="valore-catastale">Valore Catastale</label>
                 </div>
@@ -185,25 +187,25 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                     <input type="number" name="valore-catastale" id="valore-catastale" min="0">
                 </div>
             `
-    
-            const form = document.querySelector('form')
-            form.append(inputValoreCatastale)
-    
-            // Get inputted valore catastale
-            inputValoreCatastale.addEventListener('input', e => {
-    
-                price = parseFloat(e.target.value)
-    
-                calculator.setValoreCatastale(price)
-            })
-    
-        } else if (seller === 'venditore-impresa') {
-    
-            // Create input for 'prezzo di acquisto'
-            const inputPrezzoAcquisto = document.createElement('fieldset')
-            inputPrezzoAcquisto.classList.add('form-row-money')
-    
-            inputPrezzoAcquisto.innerHTML = `
+
+        const form = document.querySelector('form')
+        form.append(inputValoreCatastale)
+
+        // Get inputted valore catastale
+        inputValoreCatastale.addEventListener('input', e => {
+
+            price = parseFloat(e.target.value)
+
+            calculator.setAmountValue(price)
+        })
+
+    } else if (seller === 'venditore-impresa') {
+
+        // Create input for 'prezzo di acquisto'
+        const inputPrezzoAcquisto = document.createElement('fieldset')
+        inputPrezzoAcquisto.classList.add('form-row-money')
+
+        inputPrezzoAcquisto.innerHTML = `
                 <div class="col-25">
                     <label for="prezzo-acquisto">Prezzo Acquisto</label>
                 </div>
@@ -211,41 +213,42 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                     <input type="number" name="prezzo-acquisto" id="prezzo-acquisto" min="0">
                 </div>
             `
-    
-            const form = document.querySelector('form')
-            form.append(inputPrezzoAcquisto)
-    
-            // Get inputted prezzo acquisto
-            inputPrezzoAcquisto.addEventListener('input', e => {
-    
-                price = parseFloat(e.target.value)
-    
-                calculator.setPrezzoAcquisto(price)
-            })
-        }
-    
-        calculator.selectSellerType(seller)
-       
-        const btnCalcExists = document.querySelector('.div-btn-calc')
-    
-        if (btnCalcExists === null) {
-    
-            // Add button to run calculation
-            const divBtnCalc = document.createElement('div')
-            divBtnCalc.classList.add('div-btn-calc')
-            divBtnCalc.innerHTML = `
+
+        const form = document.querySelector('form')
+        form.append(inputPrezzoAcquisto)
+
+        // Get inputted prezzo acquisto
+        inputPrezzoAcquisto.addEventListener('input', e => {
+
+            price = parseFloat(e.target.value)
+
+            calculator.setAmountValue(price)
+        })
+    }
+
+    calculator.selectSellerType(seller)
+
+    const btnCalcExists = document.querySelector('.div-btn-calc')
+
+    if (btnCalcExists === null) {
+
+        // Add button to run calculation
+        const divBtnCalc = document.createElement('div')
+        divBtnCalc.classList.add('div-btn-calc')
+        divBtnCalc.innerHTML = `
                 <button id="btn-calc">Calcola</button>
             `
-        
-            const body = document.body
-        
-            body.append(divBtnCalc)
-        
-            const btnCalc = document.getElementById('btn-calc')
-        
-            btnCalc.addEventListener('click', e => {
-                calculator.compute()
-                // calculator.displayResult()
-            })
-        }
-}))
+
+        const body = document.body
+
+        body.append(divBtnCalc)
+
+        const btnCalc = document.getElementById('btn-calc')
+
+        btnCalc.addEventListener('click', e => {
+            calculator.compute()
+            // calculator.displayResult()
+        })
+    }
+}
+))
