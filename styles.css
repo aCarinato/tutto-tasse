@@ -7,7 +7,7 @@
 
 body {
     text-align: center;
-    font-family:Arial, Helvetica, sans-serif;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 fieldset {
@@ -25,6 +25,33 @@ input[type=number] {
     border-radius: .25rem;
     resize: vertical;
     /* font-size: 1rem; */
+}
+
+#nameError {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#nameError.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: red;
+}
+
+#inputNegative {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#inputNegative.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: red;
+}
+
+input[type=number].invalid {
+    border: 2px solid red;
+    /* border-color: red; */
 }
 
 input[type=radio] {
@@ -86,7 +113,9 @@ p {
 }
 
 /* ------------------------- */
+
 /* PERSONALISED RADIO-BUTTON */
+
 /* ------------------------- */
 
 .label-radio {
@@ -109,6 +138,7 @@ p {
 }
 
 /* Create custom radio-button */
+
 .checkmark {
     position: absolute;
     top: .75rem;
@@ -121,16 +151,19 @@ p {
 }
 
 /* On mouse-over, add a grey background color */
-.radio-container:hover input ~ .checkmark {
+
+.radio-container:hover input~.checkmark {
     background-color: #ccc;
 }
 
 /* When the radio button is checked, add a blue background */
-.radio-container input:checked ~ .checkmark {
+
+.radio-container input:checked~.checkmark {
     background-color: #2196F3;
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
+
 /* .checkmark::after {
     content: "";
     position: absolute;
@@ -138,11 +171,13 @@ p {
 } */
 
 /* Show the indicator (dot/circle) when checked */
+
 /* .radio-container input:checked ~ .checkmark:after {
     display: block;
 } */
 
 /* Style the indicator (dot/circle) */
+
 /* .radio-container .checkmark:after {
     top: 9px;
    left: 9px;
@@ -153,11 +188,13 @@ p {
 } */
 
 /* ------------------------- */
+
 /* ------------------------- */
 
-
 /* ------------- */
+
 /* TABLE RESULTS */
+
 /* ------------- */
 
 .result-table {
@@ -187,8 +224,10 @@ td, th {
 }
 
 /* ------------- */
-/* ------------- */
 
+/* MEDIA QUERIES */
+
+/* ------------- */
 
 #btn-calc:hover {
     background-color: #45a049;
@@ -204,11 +243,9 @@ td, th {
     .container {
         width: 90%;
     }
-
     .col-25, .col-75, input[type=submit] {
         width: 100%;
     }
-
     /* #div-results {
         width: 90%;
     } */
