@@ -47,7 +47,7 @@ class Calculator {
         // nameError.setAttribute('aria-invalid', true);
     }
 
-    warnNegativeAmount(e) {
+    warnNegativeAmount() {
         // Highlight the negative value on the input price/valore catastale and display the label warning
         const validateInput = document.getElementById('input-amount')
         validateInput.classList.add('invalid')
@@ -59,8 +59,6 @@ class Calculator {
         // Make the 'negative input' label visible
         const inputNegative = document.getElementById("inputNegative");
         inputNegative.classList.add("visible");
-
-        // e.target.style.color = 'red'
 
     }
 
@@ -77,7 +75,7 @@ class Calculator {
         }
     }
 
-    removeWarnings(e) {
+    removeWarnings() {
 
         const validateInput = document.getElementById('input-amount')
         validateInput.classList.remove('invalid')
@@ -95,7 +93,7 @@ class Calculator {
         this.warnMissingHouseType()
         if (this.amountValue > 0.0 && this.amountValue !== null) {
 
-            if (this.houseType === 'prima-casa' && this.sellerType === 'venditore-privato') {
+            if (this.houseType === 'prima casa' && this.sellerType === 'venditore privato') {
 
                 const impostaRegistro = 0.02 * this.amountValue // euro
                 const impostaCatastale = 50 // euro
@@ -106,7 +104,8 @@ class Calculator {
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
 
-            } else if (this.houseType === 'prima-casa' && this.sellerType === 'venditore-impresa') {
+            } else if (this.houseType === 'prima casa' && this.sellerType === 'impresa') {
+
                 const impostaRegistro = 200 // euro
                 const impostaCatastale = 200 // euro
                 const impostaIpotecaria = 200 // euro
@@ -116,7 +115,8 @@ class Calculator {
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
 
-            } else if (this.houseType === 'seconda-casa' && this.sellerType === 'venditore-privato') {
+            } else if (this.houseType === 'seconda casa' && this.sellerType === 'venditore privato') {
+
                 const impostaRegistro = 0.09 * this.amountValue // euro
                 const impostaCatastale = 50 // euro
                 const impostaIpotecaria = 50 // euro
@@ -126,7 +126,8 @@ class Calculator {
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
 
-            } else if (this.houseType === 'seconda-casa' && this.sellerType === 'venditore-impresa') {
+            } else if (this.houseType === 'seconda casa' && this.sellerType === 'impresa') {
+
                 const impostaRegistro = 200 // euro
                 const impostaCatastale = 200 // euro
                 const impostaIpotecaria = 200 // euro
@@ -136,6 +137,7 @@ class Calculator {
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
             }
+
         } else if (this.amountValue === null || isNaN(this.amountValue) || this.amountValue < 0.0) {
             this.validateInputAmount()
         }
@@ -155,26 +157,36 @@ class Calculator {
 
         containerTableResults.innerHTML = `
             <table class="result-table">
-                <tr>
-                    <td>Imposta di Registro:</td>
-                    <td class="td-amount">${impostaRegistro} €</td>
-                </tr>
-                <tr>
-                    <td>Imposta Catastale:</td>
-                    <td class="td-amount">${impostaCatastale} €</td>
-                </tr>
-                <tr>
-                    <td>Imposta Ipotecaria:</td>
-                    <td class="td-amount">${impostaIpotecaria} €</td>
-                </tr>
-                <tr>
-                    <td>IVA:</td>
-                    <td class="td-amount">${IVA} €</td>
-                </tr>
-                <tr class="row-total-amt">
-                    <td>Totale:</td>
-                    <td class="td-amount">${totaleImposte} €</td>
-                </tr>
+                <thead>
+                    <tr>
+                        <th colspan='2'>Acquisto ${calculator.houseType} da ${calculator.sellerType}.<br>Ammontare per calcolo imposte: ${calculator.amountValue} €</th>
+                    </tr>
+                    <tr id='riepilogo-imposte'>
+                        <th colspan='2'>Riepilogo imposte:</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Imposta di Registro:</td>
+                        <td class="td-amount">${impostaRegistro} €</td>
+                    </tr>
+                    <tr>
+                        <td>Imposta Catastale:</td>
+                        <td class="td-amount">${impostaCatastale} €</td>
+                    </tr>
+                    <tr>
+                        <td>Imposta Ipotecaria:</td>
+                        <td class="td-amount">${impostaIpotecaria} €</td>
+                    </tr>
+                    <tr>
+                        <td>IVA:</td>
+                        <td class="td-amount">${IVA} €</td>
+                    </tr>
+                    <tr class="row-total-amt">
+                        <td>Totale:</td>
+                        <td class="td-amount">${totaleImposte} €</td>
+                    </tr>
+                </tbody>
             </table>
         `
 
@@ -255,7 +267,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         formRowMoneyExists.remove()
     }
 
-    if (seller === 'venditore-privato') {
+    if (seller === 'venditore privato') {
 
         // Create input for valore catastale
         const inputValoreCatastale = document.createElement('fieldset')
@@ -286,15 +298,15 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             calculator.warnMissingHouseType()
 
             if (price < 0.0) {
-                calculator.warnNegativeAmount(e)
+                calculator.warnNegativeAmount()
 
             } else {
-                calculator.removeWarnings(e)
+                calculator.removeWarnings()
                 calculator.setAmountValue(price)
             }
         })
 
-    } else if (seller === 'venditore-impresa') {
+    } else if (seller === 'impresa') {
 
         // Create input for 'prezzo di acquisto'
         const inputPrezzoAcquisto = document.createElement('fieldset')
@@ -326,13 +338,12 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             price = parseFloat(e.target.value)
 
             if (price < 0.0) {
-                calculator.warnNegativeAmount(e)
+                calculator.warnNegativeAmount()
 
             } else {
-                calculator.removeWarnings(e)
+                calculator.removeWarnings()
                 calculator.setAmountValue(price)
             }
-
         })
     }
 

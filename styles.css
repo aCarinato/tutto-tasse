@@ -232,9 +232,15 @@ p {
     border-collapse: collapse;
 }
 
-td, th {
+td {
     padding: 0.75rem 0.75rem;
     /* border: 1px solid #999; */
+}
+
+th {
+    padding: 0.75rem 0.75rem;
+    text-align: left;
+    font-size: 1.05rem;
 }
 
 .for-valore-catastale {
@@ -249,6 +255,10 @@ td, th {
 .row-total-amt {
     font-weight: bold;
     border-top: 1px solid #999;
+}
+
+#riepilogo-imposte {
+    border-bottom: 1px solid #999;
 }
 
 /* ------------- */
