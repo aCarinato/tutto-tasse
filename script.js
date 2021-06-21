@@ -228,6 +228,9 @@ class Calculator {
         // Input price (valore catastale or prezzo acquisto) and label
         document.querySelector('.form-row-money').remove()
         document.querySelector('.div-btn-calc').remove()
+
+        this.houseType = null
+        this.sellerType = null
     }
 }
 
