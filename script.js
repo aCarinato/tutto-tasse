@@ -1,7 +1,7 @@
-// TODO: add treatment when some input field is left empty
 // TODO: add treatment when the input price starts with a '0'
 // TODO: replace radio-button with segment control
 // TODO: add explanation (link other page) for valore catastale
+// TODO: add label on results table with summary of input parameters
 
 class Calculator {
     constructor(houseType, sellerType, amountValue) {
@@ -23,40 +23,76 @@ class Calculator {
     }
 
     validateInputAmount() {
-        // Highlight the missing value on the input price/valore catastale
+        // Highlight the missing value on the input price/valore catastale and display the label warning
         const validateInput = document.getElementById('input-amount')
         validateInput.classList.add('invalid')
 
-        const nameError = document.getElementById("nameError");
-        nameError.classList.add("visible");
-        nameError.setAttribute('aria-hidden', false);
-        nameError.setAttribute('aria-invalid', true);
+        // Making sure only relevant message is displayed
+        if (validateInput.value < 0.0) {
+            const nameError = document.getElementById("nameError");
+            nameError.classList.remove("visible");
+
+            const inputNegative = document.getElementById("inputNegative");
+            inputNegative.classList.add("visible");
+
+        } else {
+            const nameError = document.getElementById("nameError");
+            nameError.classList.add("visible");
+
+            const inputNegative = document.getElementById("inputNegative");
+            inputNegative.classList.remove("visible");
+        }
+
+        // nameError.setAttribute('aria-hidden', false);
+        // nameError.setAttribute('aria-invalid', true);
     }
 
-    warnNegativeAmount() {
-        // Highlight the missing value on the input price/valore catastale
+    warnNegativeAmount(e) {
+        // Highlight the negative value on the input price/valore catastale and display the label warning
         const validateInput = document.getElementById('input-amount')
         validateInput.classList.add('invalid')
 
+        // In case there was a previous message of empty fied upon submission
         const nameError = document.getElementById("nameError");
         nameError.classList.remove("visible");
 
+        // Make the 'negative input' label visible
         const inputNegative = document.getElementById("inputNegative");
         inputNegative.classList.add("visible");
-        inputNegative.setAttribute('aria-hidden', false);
-        inputNegative.setAttribute('aria-invalid', true);
+
+        // e.target.style.color = 'red'
+
     }
 
-    removeWarnings() {
+    warnMissingHouseType() {
+        if (this.houseType === null) {
+            
+            // radio buttons box 
+            // const warningHouseType = document.getElementById('tipo-abitazione')
+            // warningHouseType.classList.add('tipo-abitazione-missing')
+
+            // text message
+            const warningHouseTypeText = document.getElementById('missingTipoAbitazione')
+            warningHouseTypeText.classList.add('visible')
+        }
+    }
+
+    removeWarnings(e) {
+
+        const validateInput = document.getElementById('input-amount')
+        validateInput.classList.remove('invalid')
 
         const nameError = document.getElementById("nameError");
         nameError.classList.remove("visible");
 
         const inputNegative = document.getElementById("inputNegative");
         inputNegative.classList.remove("visible");
+
+        // e.target.style.color = 'black'
     }
 
     compute() {
+        this.warnMissingHouseType()
         if (this.amountValue > 0.0 && this.amountValue !== null) {
 
             if (this.houseType === 'prima-casa' && this.sellerType === 'venditore-privato') {
@@ -100,7 +136,7 @@ class Calculator {
 
                 this.displayResult(impostaRegistro.toFixed(1), impostaCatastale.toFixed(1), impostaIpotecaria.toFixed(1), IVA.toFixed(1), totaleImposte.toFixed(1))
             }
-        } else if (this.amountValue === null || isNaN(this.amountValue)) {
+        } else if (this.amountValue === null || isNaN(this.amountValue) || this.amountValue < 0.0) {
             this.validateInputAmount()
         }
     }
@@ -187,29 +223,33 @@ class Calculator {
 const selectedHouseType = document.querySelectorAll('input[type=radio][name="tipo-abitazione"]')
 const selectedSellerType = document.querySelectorAll('input[type=radio][name="tipo-venditore"]')
 
-const calculator = new Calculator(selectedHouseType, selectedSellerType, null) // amountValue set to null just for initialisation
+const calculator = new Calculator(null, null, null) // set to null for initialisation. The null is useful also for field validation
 
 //  ---------------  //
 //  EVENT LISTENERS  //
 //  ---------------  //
 
 selectedHouseType.forEach(radio => radio.addEventListener('change', e => {
-    console.log(radio.value)
 
     house = radio.value
 
     calculator.selectHouseType(house)
+
+    // In case this choice was left empty at the moment of filling the input 'form-row-money', now remove the warning
+    // const warningHouseType = document.getElementById('tipo-abitazione')
+    // warningHouseType.classList.remove('tipo-abitazione-missing')
+
+    // text message
+    const warningHouseTypeText = document.getElementById('missingTipoAbitazione')
+    warningHouseTypeText.classList.remove('visible')
 
 }))
 
 selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
     seller = radio.value
 
-    // const containerTableResultsExists = document.getElementById('div-results')
     const formRowMoneyExists = document.querySelector('.form-row-money')
-    // const btnCalcExistsOnChange = document.querySelector('.div-btn-calc')
 
-    // calculator.removeElements(formRowMoneyExists, containerTableResultsExists, btnCalcExistsOnChange)
     if (formRowMoneyExists !== null) {
         calculator.setAmountValue(null)
         formRowMoneyExists.remove()
@@ -227,8 +267,8 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                 </div>
                 <div class="col-75">
                     <input type="number" name="valore-catastale" id="input-amount" min="0" required>
-                    <span role="alert" id="nameError" aria-hidden="true"> Inserire Valore Catastale </span>
-                    <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido </span>
+                    <span role="alert" id="nameError" aria-hidden="true"> Inserire Valore Catastale! </span>
+                    <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>
                 </div>
             `
 
@@ -243,12 +283,13 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
 
             price = parseFloat(e.target.value)
 
+            calculator.warnMissingHouseType()
+
             if (price < 0.0) {
-                console.log('prezzo negativo, non ci siamo')
-                calculator.warnNegativeAmount()
+                calculator.warnNegativeAmount(e)
 
             } else {
-                calculator.removeWarnings()
+                calculator.removeWarnings(e)
                 calculator.setAmountValue(price)
             }
         })
@@ -265,8 +306,8 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                 </div>
                 <div class="col-75">
                     <input type="number" name="prezzo-acquisto" id="input-amount" min="0" required>
-                    <span role="alert" id="nameError" aria-hidden="true"> Inserire Prezzo Acquisto </span>
-                    <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido </span>
+                    <span role="alert" id="nameError" aria-hidden="true"> Inserire Prezzo Acquisto! </span>
+                    <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>
                 </div>
             `
 
@@ -276,6 +317,8 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         // Get inputted prezzo acquisto
         inputPrezzoAcquisto.addEventListener('input', e => {
 
+            calculator.warnMissingHouseType()
+
             // If there was an invalid input on the price the border was red
             const removeInvalid = document.getElementById('input-amount')
             removeInvalid.classList.remove('invalid')
@@ -283,11 +326,10 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             price = parseFloat(e.target.value)
 
             if (price < 0.0) {
-                console.log('prezzo negativo, non ci siamo')
-                calculator.warnNegativeAmount()
+                calculator.warnNegativeAmount(e)
 
             } else {
-                calculator.removeWarnings()
+                calculator.removeWarnings(e)
                 calculator.setAmountValue(price)
             }
 

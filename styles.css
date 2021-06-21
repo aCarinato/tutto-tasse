@@ -10,6 +10,10 @@ body {
     font-family: Arial, Helvetica, sans-serif;
 }
 
+/* -------------- */
+/* FORM SELECTORS */
+/* -------------- */
+
 fieldset {
     margin: 1rem auto;
     border: none;
@@ -24,33 +28,13 @@ input[type=number] {
     border: 1px solid #ccc;
     border-radius: .25rem;
     resize: vertical;
+    margin-top: .5rem;
     /* font-size: 1rem; */
-}
-
-#nameError {
-    display: none;
-    font-size: 0.8rem;
-}
-
-#nameError.visible {
-    display: block;
-    margin-left: 0.75rem;
-    color: red;
-}
-
-#inputNegative {
-    display: none;
-    font-size: 0.8rem;
-}
-
-#inputNegative.visible {
-    display: block;
-    margin-left: 0.75rem;
-    color: red;
 }
 
 input[type=number].invalid {
     border: 2px solid red;
+    color: red;
     /* border-color: red; */
 }
 
@@ -79,6 +63,10 @@ p {
     /* padding-right: 2rem; */
 }
 
+/* ------------ */
+/* FORM CLASSES */
+/* ------------ */
+
 .container {
     width: 30%;
     margin: auto;
@@ -87,8 +75,6 @@ p {
     padding: 1rem;
     font-size: 1rem;
 }
-
-/* FORM */
 
 .col-25 {
     /* float: left; */
@@ -106,16 +92,61 @@ p {
     width: 39%;
     margin-top: .25rem;
     display: inline-block;
+    border: none;
+    border-radius: 5px;
 }
 
 .div-btn-calc {
     margin: 1.5rem 0;
 }
 
+/* ------ */
+/* ERRORS */
+/* ------ */
+
+/* Tipo abitazione */
+
+#missingTipoAbitazione {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#missingTipoAbitazione.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: red;
+}
+
+.tipo-abitazione-missing {
+    border: 2px solid red
+}
+
+/* Prezzo/Rendita catastale */
+
+#nameError {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#nameError.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: red;
+}
+
+#inputNegative {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#inputNegative.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: red;
+}
+
 /* ------------------------- */
-
 /* PERSONALISED RADIO-BUTTON */
-
 /* ------------------------- */
 
 .label-radio {
@@ -188,13 +219,10 @@ p {
 } */
 
 /* ------------------------- */
-
 /* ------------------------- */
 
 /* ------------- */
-
 /* TABLE RESULTS */
-
 /* ------------- */
 
 .result-table {
@@ -224,9 +252,7 @@ td, th {
 }
 
 /* ------------- */
-
 /* MEDIA QUERIES */
-
 /* ------------- */
 
 #btn-calc:hover {
