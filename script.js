@@ -145,6 +145,11 @@ class Calculator {
 
     displayResult(impostaRegistro, impostaCatastale, impostaIpotecaria, IVA, totaleImposte) {
 
+        // Remove any leading zeros from input amount
+        const inputAmount = document.getElementById('input-amount')
+        inputAmount.value = inputAmount.value.replace(/^[0]+/g,"")
+
+        // Create results table
         const containerTableResultsExists = document.getElementById('div-results')
 
         if (containerTableResultsExists !== null) {
@@ -275,7 +280,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
 
         inputValoreCatastale.innerHTML = `
                 <div class="col-25">
-                    <label for="valore-catastale">Valore Catastale</label>
+                    <label for="valore-catastale">Valore Catastale €</label>
                 </div>
                 <div class="col-75">
                     <input type="number" name="valore-catastale" id="input-amount" min="0" required>
@@ -314,7 +319,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
 
         inputPrezzoAcquisto.innerHTML = `
                 <div class="col-25">
-                    <label for="prezzo-acquisto">Prezzo Acquisto</label>
+                    <label for="prezzo-acquisto">Prezzo Acquisto €</label>
                 </div>
                 <div class="col-75">
                     <input type="number" name="prezzo-acquisto" id="input-amount" min="0" required>
