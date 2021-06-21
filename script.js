@@ -1,7 +1,5 @@
-// TODO: add treatment when the input price starts with a '0'
 // TODO: replace radio-button with segment control
 // TODO: add explanation (link other page) for valore catastale
-// TODO: add label on results table with summary of input parameters
 
 class Calculator {
     constructor(houseType, sellerType, amountValue) {
@@ -164,7 +162,7 @@ class Calculator {
             <table class="result-table">
                 <thead>
                     <tr>
-                        <th colspan='2'>Acquisto ${calculator.houseType} da ${calculator.sellerType}.<br>Ammontare per calcolo imposte: ${calculator.amountValue} €</th>
+                        <th colspan='2'>Acquisto <span style="color:#2196F3">${calculator.houseType}</span> da <span style="color:#2196F3">${calculator.sellerType}</span>.<br>Ammontare per calcolo imposte: <span style="color:#2196F3">${calculator.amountValue} €</span></th>
                     </tr>
                     <tr id='riepilogo-imposte'>
                         <th colspan='2'>Riepilogo imposte:</th>
