@@ -1,62 +1,27 @@
+<!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calcolatore tasse acquisto casa</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- <script src="script.js"></script> -->
+    <link rel="stylesheet" href="main.css">
+    <title>Document</title>
 </head>
-
 <body>
     <header>
-        <h1>Dimmi quante ne vuoi, se ne vuoi...</h1>
+        <div class="text-left">
+            <a href="index.html" id="homepage-link">
+                <h1>Tutto Tasse!</h1>
+                <p>Calcola le tue tasse. E molto altro.</p>
+            </a>
+        </div>
     </header>
-   
-    <div class="container">
-        <form action="">
-            <!-- <div class="form-row"> -->
-                <fieldset>
-                    <div class="col-25">
-                        <label class="label-radio" for="tipo-abitazione">Tipologia: </label>
-                    </div>
-                    <div class="col-75" id="tipo-abitazione">
-                        <label class="radio-container">Prima Casa
-                            <input type="radio" id="prima-casa" name="tipo-abitazione" value="prima casa">
-                            <span class="checkmark"></span>
-                        </label>
-                        <label class="radio-container">Seconda Casa
-                            <input type="radio" id="prima-casa" name="tipo-abitazione" value="seconda casa">
-                            <span class="checkmark"></span>
-                        </label>
-                        <span role="alert" id="missingTipoAbitazione" aria-hidden="true"> Selezionare tipo abitazione! </span>
-                    </div>
-                </fieldset>
-            <!-- </div> -->
-            <fieldset>
-                <div class="col-25">
-                    <label class="label-radio" for="tipo-venditore">Acquisto da: </label>
-                </div>
-                <div class="col-75">
-                    <label class="radio-container">Privato
-                        <input type="radio" id="venditore-privato" name="tipo-venditore" value="venditore privato">
-                        <span class="checkmark"></span>
-                    </label>
-                    <label class="radio-container">Impresa
-                        <input type="radio" id="venditore-impresa" name="tipo-venditore" value="impresa">
-                        <span class="checkmark"></span>
-                    </label>
-                </div>
-            </fieldset>
-            <!-- <div class="form-row">
 
-            </div> -->
-        </form>
-        <!-- <button id="btn-calc">Calculate</button> -->
-    </div>
-
-    <script src="script.js"></script>
-
+    <section>
+        <div class="container">
+            <a class="mainpage-link" href="./calcolatori/tasse-acquisto-casa.html">Tasse Acquisto Casa</a>
+            <a class="mainpage-link" href="./calcolatori/valore-catastale.html">Valore Catastale</a>
+        </div>
+    </section>
 </body>
-
 </html>

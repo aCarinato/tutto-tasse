@@ -1,3 +1,22 @@
+:root {
+    /* Global CSS variables */
+    /* COLORS */
+    --clr-primary-header: #222c2a;
+    --clr-primary-body: #f2f2f2;
+    --clr-secondary-body: #ccc;
+    --clr-secondary-body-400: #2196F3;
+
+    --clr-text: white;
+
+    --clr-button: #04AA6D;
+    --clr-button-hover: #45a049;
+
+    --clr-errors: red;
+
+    /* FONTS */
+    --ff-primary: Arial, Helvetica, sans-serif;
+}
+
 * {
     /* sets how the total width and height of an element is calculated */
     box-sizing: border-box;
@@ -5,7 +24,33 @@
 
 body {
     text-align: center;
-    font-family: Arial, Helvetica, sans-serif;
+    font-family:var(--ff-primary);
+    margin: 0;
+    padding: 0;
+}
+
+/* --------------- */
+/* GENERAL CLASSES */
+/* --------------- */
+
+.mainpage-link {
+    font-size: 1rem;
+}
+
+.text-left {
+    text-align: left;
+}
+
+/* ----------- */
+/* MAIN HEADER */
+/* ----------- */
+
+#homepage-link {
+    background-color: var(--clr-primary-header);
+    color: var(--clr-text);
+    text-align: left;
+    margin-bottom: 2.5rem;
+    font-size: 1rem;
 }
 
 /* -------------- */
@@ -23,7 +68,7 @@ input[type=number] {
     width: 9.5rem;
     padding: 0.5rem;
     margin-left: 0.75rem;
-    border: 1px solid #ccc;
+    border: 1px solid var(--clr-primary-body);
     border-radius: .25rem;
     resize: vertical;
     margin-top: .5rem;
@@ -31,8 +76,8 @@ input[type=number] {
 }
 
 input[type=number].invalid {
-    border: 2px solid red;
-    color: red;
+    border: 2px solid var(--clr-errors);
+    color: var(--clr-errors);
     /* border-color: red; */
 }
 
@@ -45,8 +90,8 @@ label {
 }
 
 button {
-    background-color: #04AA6D;
-    color: white;
+    background-color: var(--clr-button);
+    color: var(--clr-text);
     padding: 0.75rem 2rem;
     border: none;
     border-radius: 0.25rem;
@@ -56,9 +101,12 @@ button {
     /* font-size: 1rem; */
 }
 
-p {
-    text-align: right;
-    /* padding-right: 2rem; */
+a {
+    display: block;
+    font-size: 0.75rem;
+    padding: 0.25rem 0.75rem;
+    text-decoration: none;
+    color: var(--clr-secondary-body-400);
 }
 
 /* ------------ */
@@ -69,7 +117,7 @@ p {
     width: 30%;
     margin: auto;
     border-radius: 0.25rem;
-    background-color: #f2f2f2;
+    background-color: var(--clr-primary-body);
     padding: 1rem;
     font-size: 1rem;
 }
@@ -112,11 +160,11 @@ p {
 #missingTipoAbitazione.visible {
     display: block;
     margin-left: 0.75rem;
-    color: red;
+    color: var(--clr-errors);
 }
 
 .tipo-abitazione-missing {
-    border: 2px solid red
+    border: 2px solid var(--clr-errors)
 }
 
 /* Prezzo/Rendita catastale */
@@ -129,7 +177,7 @@ p {
 #nameError.visible {
     display: block;
     margin-left: 0.75rem;
-    color: red;
+    color: var(--clr-errors);
 }
 
 #inputNegative {
@@ -140,7 +188,7 @@ p {
 #inputNegative.visible {
     display: block;
     margin-left: 0.75rem;
-    color: red;
+    color: var(--clr-errors);
 }
 
 /* ------------------------- */
@@ -175,20 +223,20 @@ p {
     height: 1rem;
     width: 1rem;
     border-radius: 50%;
-    background-color: white;
-    border: 1px solid grey;
+    background-color: var(--clr-text);
+    border: 1px solid var(--clr-secondary-body);
 }
 
 /* On mouse-over, add a grey background color */
 
 .radio-container:hover input~.checkmark {
-    background-color: #ccc;
+    background-color: var(--clr-secondary-body);
 }
 
 /* When the radio button is checked, add a blue background */
 
 .radio-container input:checked~.checkmark {
-    background-color: #2196F3;
+    background-color: var(--clr-secondary-body-400);
 }
 
 /* Create the indicator (the dot/circle - hidden when not checked) */
@@ -264,7 +312,7 @@ th {
 /* ------------- */
 
 #btn-calc:hover {
-    background-color: #45a049;
+    background-color: var(--clr-button-hover);
 }
 
 @media screen and (max-width: 1600px) {
