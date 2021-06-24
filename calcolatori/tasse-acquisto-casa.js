@@ -1,5 +1,4 @@
 // TODO: replace radio-button with segment control
-// TODO: add explanation (link other page) for valore catastale
 
 class Calculator {
     constructor(houseType, sellerType, amountValue) {
@@ -280,11 +279,11 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         inputValoreCatastale.classList.add('form-row-money')
 
         inputValoreCatastale.innerHTML = `
-                <div class="col-25">
+                <div class="col-60">
                     <label for="valore-catastale">Valore Catastale €</label>
-                    <a href='./pages/valore-catastale' target='_blank'>Come calcolo il Valore Catastale?</a>
+                    <a href='valore-catastale.html' target='_blank'>Come calcolo il Valore Catastale?</a>
                 </div>
-                <div class="col-75">
+                <div class="col-40">
                     <input type="number" name="valore-catastale" id="input-amount" min="0" required>
                     <span role="alert" id="nameError" aria-hidden="true"> Inserire Valore Catastale! </span>
                     <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>
@@ -320,10 +319,10 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         inputPrezzoAcquisto.classList.add('form-row-money')
 
         inputPrezzoAcquisto.innerHTML = `
-                <div class="col-25">
+                <div class="col-60">
                     <label for="prezzo-acquisto">Prezzo Acquisto €</label>
                 </div>
-                <div class="col-75">
+                <div class="col-40">
                     <input type="number" name="prezzo-acquisto" id="input-amount" min="0" required>
                     <span role="alert" id="nameError" aria-hidden="true"> Inserire Prezzo Acquisto! </span>
                     <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>

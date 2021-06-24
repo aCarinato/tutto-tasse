@@ -1,0 +1,48 @@
+.container-enlarged {
+    width: 35%;
+}
+
+.col-60-modified {
+    vertical-align: middle;
+    padding-top: 0;
+    margin-top: 1.25rem;
+}
+
+.col-40-modified {
+    vertical-align: middle;
+    padding-top: 0;
+    margin-top: 1.25rem;
+}
+
+#input-amount {
+    width: 100%;
+    margin: 0;
+}
+
+/* ------------- */
+/* MEDIA QUERIES */
+/* ------------- */
+
+@media screen and (max-width: 1600px) {
+    .container-enlarged {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container-enlarged {
+        width: 90%;
+    }
+    .col-60, .col-40, input[type=submit] {
+        width: 100%;
+    }
+    /* #div-results {
+        width: 90%;
+    } */
+}
+
+@media screen and (max-width: 352px) {
+    html, select {
+        font-size: 0.75rem;
+    }
+}
