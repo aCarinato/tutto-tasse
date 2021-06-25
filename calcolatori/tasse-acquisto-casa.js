@@ -88,6 +88,7 @@ class Calculator {
 
     compute() {
         this.warnMissingHouseType()
+        
         if (this.amountValue > 0.0 && this.amountValue !== null) {
 
             if (this.houseType === 'prima casa' && this.sellerType === 'venditore privato') {
@@ -366,13 +367,17 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                 <button id="btn-calc">Calcola</button>
             `
 
-        const body = document.body
+        // const body = document.body
 
-        body.append(divBtnCalc)
+        // body.append(divBtnCalc)
+
+        const container = document.getElementById('container')
+        container.append(divBtnCalc)
 
         const btnCalc = document.getElementById('btn-calc')
 
         btnCalc.addEventListener('click', e => {
+            e.preventDefault()
             calculator.compute()
         })
     }

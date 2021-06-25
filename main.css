@@ -78,7 +78,7 @@ input[type=number] {
     width: 9.5rem;
     padding: 0.5rem;
     margin-left: 0.75rem;
-    border: 1px solid var(--clr-primary-body);
+    border: 1px solid var(--clr-secondary-body);
     border-radius: .25rem;
     resize: vertical;
     margin-top: .5rem;
@@ -125,10 +125,10 @@ a {
 
 .container {
     width: 30%;
-    margin: auto;
+    margin: 1rem auto;
     border-radius: 0.25rem;
     background-color: var(--clr-primary-body);
-    padding: 1rem;
+    padding: 1rem 1rem 0 1rem;
     font-size: 1rem;
 }
 
@@ -152,7 +152,10 @@ a {
 }
 
 .div-btn-calc {
-    margin: 1.5rem 0;
+    margin: 0.5rem auto;
+    width: 95%;
+    border-top: 1px solid #999;
+    padding: 1rem 0;
 }
 
 /* ------ */
