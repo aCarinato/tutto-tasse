@@ -292,6 +292,7 @@ a {
 
 td {
     padding: 0.75rem 0.75rem;
+    text-align: left;
     /* border: 1px solid #999; */
 }
 
@@ -311,6 +312,7 @@ th {
 }
 
 .row-total-amt {
+    font-size: 1.1rem;
     font-weight: bold;
     border-top: 1px solid #999;
 }

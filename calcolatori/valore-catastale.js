@@ -67,7 +67,43 @@ class Calculator {
         const moltiplicatore = this.setMoltiplicatoreCatastale()
         const valoreCatastale = this.renditaCatastale * 1.05 * moltiplicatore 
 
-        console.log(valoreCatastale)
+        // console.log(valoreCatastale)
+
+        this.displayResults(valoreCatastale)
+    }
+
+    displayResults(valoreCatastale) {
+
+        // Create results table
+        const containerTableResultsExists = document.getElementById('div-results')
+
+        if (containerTableResultsExists !== null) {
+            containerTableResultsExists.remove()
+        }
+
+        const containerTableResults = document.createElement('div')
+        containerTableResults.classList.add('container')
+        containerTableResults.classList.add('container-enlarged')
+        containerTableResults.setAttribute('id', 'div-results')
+        containerTableResults.innerHTML = `
+        <table class="result-table">
+            <thead>
+                <tr>
+                    <th colspan='2'>Valore Catastale per <span style="color:#2196F3">${calculator.categoriaCatastale}</span><br>Rendita Catastale: <span style="color:#2196F3">${calculator.renditaCatastale} €</span></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr class="row-total-amt">
+                    <td>Valore Catastale:</td>
+                    <td class="td-amount">${valoreCatastale} €</td>
+                </tr>
+            </tbody>
+        </table>
+    `
+
+    const body = document.body
+    body.append(containerTableResults)
+
     }
 }
 
