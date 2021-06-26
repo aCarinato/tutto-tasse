@@ -162,45 +162,50 @@ class Calculator {
             <table class="result-table">
                 <thead>
                     <tr>
-                        <th colspan='2'>Acquisto <span style="color:#2196F3">${calculator.houseType}</span> da <span style="color:#2196F3">${calculator.sellerType}</span>.<br>Ammontare per calcolo imposte: <span style="color:#2196F3">${calculator.amountValue} €</span></th>
+                        <th class="left-col" colspan='2'>Acquisto <span style="color:#2196F3">${calculator.houseType}</span> da <span style="color:#2196F3">${calculator.sellerType}</span>.<br>Ammontare per calcolo imposte: <span style="color:#2196F3">${calculator.amountValue} €</span></th>
                     </tr>
                     <tr id='riepilogo-imposte'>
-                        <th colspan='2'>Riepilogo imposte:</th>
+                        <th class="left-col" colspan='2'>Riepilogo imposte:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Imposta di Registro:</td>
+                        <td class="left-col">Imposta di Registro:</td>
                         <td class="td-amount">${impostaRegistro} €</td>
                     </tr>
                     <tr>
-                        <td>Imposta Catastale:</td>
+                        <td class="left-col">Imposta Catastale:</td>
                         <td class="td-amount">${impostaCatastale} €</td>
                     </tr>
                     <tr>
-                        <td>Imposta Ipotecaria:</td>
+                        <td class="left-col">Imposta Ipotecaria:</td>
                         <td class="td-amount">${impostaIpotecaria} €</td>
                     </tr>
                     <tr>
-                        <td>IVA:</td>
+                        <td class="left-col">IVA:</td>
                         <td class="td-amount">${IVA} €</td>
                     </tr>
                     <tr class="row-total-amt">
-                        <td>Totale:</td>
+                        <td class="left-col">Totale:</td>
                         <td class="td-amount">${totaleImposte} €</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="div-btn-calc">
+                <button id="btn-reset">Reset</button>
+            </div>
         `
 
         const body = document.body
         body.append(containerTableResults)
 
-        const btnReset = document.createElement('button')
-        btnReset.innerText = 'Reset'
-        btnReset.id = 'btn-reset'
+        // const btnReset = document.createElement('button')
+        // btnReset.innerText = 'Reset'
+        // btnReset.id = 'btn-reset'
 
-        containerTableResults.append(btnReset)
+        // containerTableResults.append(btnReset)
+
+        const btnReset = document.getElementById('btn-reset')
 
         btnReset.addEventListener('click', e => {
             calculator.resetCalc()

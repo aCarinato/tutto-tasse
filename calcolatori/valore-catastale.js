@@ -29,27 +29,27 @@ class Calculator {
             const moltiplicatoreCatastale = 60
             return moltiplicatoreCatastale
 
-        }  else if (this.categoriaCatastale === 'categoria-B') {
+        } else if (this.categoriaCatastale === 'categoria-B') {
 
             const moltiplicatoreCatastale = 140
             return moltiplicatoreCatastale
 
-        }  else if (this.categoriaCatastale === 'categoria-C') {
+        } else if (this.categoriaCatastale === 'categoria-C') {
 
             const moltiplicatoreCatastale = 120
             return moltiplicatoreCatastale
-        
-        }  else if (this.categoriaCatastale === 'categoria-C/1') {
+
+        } else if (this.categoriaCatastale === 'categoria-C/1') {
 
             const moltiplicatoreCatastale = 40.8
             return moltiplicatoreCatastale
 
-        }  else if (this.categoriaCatastale === 'categoria-D') {
+        } else if (this.categoriaCatastale === 'categoria-D') {
 
             const moltiplicatoreCatastale = 60
             return moltiplicatoreCatastale
 
-        }  else if (this.categoriaCatastale === 'categoria-E') {
+        } else if (this.categoriaCatastale === 'categoria-E') {
 
             const moltiplicatoreCatastale = 40.8
             return moltiplicatoreCatastale
@@ -65,7 +65,7 @@ class Calculator {
         // should check that all fields are entered
 
         const moltiplicatore = this.setMoltiplicatoreCatastale()
-        const valoreCatastale = this.renditaCatastale * 1.05 * moltiplicatore 
+        const valoreCatastale = (this.renditaCatastale * 1.05 * moltiplicatore).toFixed(1)
 
         // console.log(valoreCatastale)
 
@@ -86,25 +86,60 @@ class Calculator {
         containerTableResults.classList.add('container-enlarged')
         containerTableResults.setAttribute('id', 'div-results')
         containerTableResults.innerHTML = `
-        <table class="result-table">
-            <thead>
-                <tr>
-                    <th colspan='2'>Valore Catastale per <span style="color:#2196F3">${calculator.categoriaCatastale}</span><br>Rendita Catastale: <span style="color:#2196F3">${calculator.renditaCatastale} €</span></th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr class="row-total-amt">
-                    <td>Valore Catastale:</td>
-                    <td class="td-amount">${valoreCatastale} €</td>
-                </tr>
-            </tbody>
-        </table>
-    `
+            <table class="result-table">
+                <thead>
+                    <tr>
+                        <th class="left-col" colspan='2'>Valore Catastale per immobile tipo <span style="color:#2196F3">${calculator.categoriaCatastale}</span><br>Rendita Catastale: <span style="color:#2196F3">${calculator.renditaCatastale} €</span></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="row-total-amt">
+                        <td class="left-col">Valore Catastale:</td>
+                        <td class="td-amount">${valoreCatastale} €</td>
+                    </tr>
+                </tbody>
+            </table>
+            <div class="div-btn-calc">
+                <button id="btn-reset">Reset</button>
+            </div>
+        `
 
-    const body = document.body
-    body.append(containerTableResults)
+        const body = document.body
+        body.append(containerTableResults)
+
+        // const btnReset = document.createElement('button')
+        // btnReset.innerText = 'Reset'
+        // btnReset.id = 'btn-reset'
+
+        // containerTableResults.append(btnReset)
+
+        const btnReset = document.getElementById('btn-reset')
+
+        btnReset.addEventListener('click', e => {
+            calculator.resetCalc()
+        })
+    }
+
+    // Reset all values and fields
+    resetCalc() {
+        const resultExists = document.getElementById('div-results')
+
+        if (resultExists !== null) {
+            resultExists.remove()
+        }
+
+        const selectedCategoriaCatastale = document.getElementById('categoria-catastale')
+        const inputRenditaCatastale = document.getElementById('rendita-catastale')
+
+        // uncheck all radio options
+        selectedCategoriaCatastale.value = 'categoria-catastale-disabled'
+        inputRenditaCatastale.value = ''
+
+        // set the amount to null
+        // calculator.setAmountValue(null)
 
     }
+
 }
 
 //  -------------- //

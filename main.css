@@ -33,10 +33,6 @@ body {
 /* GENERAL CLASSES */
 /* --------------- */
 
-.mainpage-link {
-    font-size: 1.25rem;
-}
-
 .text-left {
     text-align: left;
 }
@@ -52,6 +48,25 @@ body {
     margin-bottom: 2.5rem;
     font-size: 1rem;
 }
+
+.mainpage-link {
+    font-size: 1.25rem;
+}
+
+/* ---------------- */
+/* CALCULATOR TITLE */
+/* ---------------- */
+
+.calculator-header {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+/* h2 {
+    width: 90%;
+    text-align: center;
+} */
 
 /* -------------- */
 /* FORM SELECTORS */
@@ -128,7 +143,7 @@ a {
     margin: 1rem auto;
     border-radius: 0.25rem;
     background-color: var(--clr-primary-body);
-    padding: 1rem 1rem 0 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     font-size: 1rem;
 }
 
@@ -284,7 +299,7 @@ a {
 /* ------------- */
 
 .result-table {
-    width: 90%;
+    width: 95%;
     font-size: 1rem;
     margin: 1rem auto;
     border-collapse: collapse;
@@ -302,6 +317,10 @@ th {
     font-size: 1.05rem;
 }
 
+.left-col {
+    padding-left: 1.5rem;
+}
+
 .for-valore-catastale {
     margin-top: 20px;
 }
@@ -309,6 +328,7 @@ th {
 .td-amount {
     width: 40%;
     text-align: right;
+    padding-right: 1.5rem;
 }
 
 .row-total-amt {
@@ -326,6 +346,10 @@ th {
 /* ------------- */
 
 #btn-calc:hover {
+    background-color: var(--clr-button-hover);
+}
+
+#btn-reset:hover {
     background-color: var(--clr-button-hover);
 }
 
