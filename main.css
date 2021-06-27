@@ -33,10 +33,6 @@ body {
 /* GENERAL CLASSES */
 /* --------------- */
 
-.mainpage-link {
-    font-size: 1rem;
-}
-
 .text-left {
     text-align: left;
 }
@@ -53,6 +49,25 @@ body {
     font-size: 1rem;
 }
 
+.mainpage-link {
+    font-size: 1.25rem;
+}
+
+/* ---------------- */
+/* CALCULATOR TITLE */
+/* ---------------- */
+
+.calculator-header {
+    margin: auto;
+    width: 90%;
+    text-align: center;
+}
+
+/* h2 {
+    width: 90%;
+    text-align: center;
+} */
+
 /* -------------- */
 /* FORM SELECTORS */
 /* -------------- */
@@ -64,11 +79,21 @@ fieldset {
     border-top: 1px solid #999;
 }
 
+select {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: .25rem;
+    resize: vertical;
+    margin-top: 0;
+    /* font-size: 1rem; */
+}
+
 input[type=number] {
     width: 9.5rem;
     padding: 0.5rem;
     margin-left: 0.75rem;
-    border: 1px solid var(--clr-primary-body);
+    border: 1px solid var(--clr-secondary-body);
     border-radius: .25rem;
     resize: vertical;
     margin-top: .5rem;
@@ -76,7 +101,7 @@ input[type=number] {
 }
 
 input[type=number].invalid {
-    border: 2px solid var(--clr-errors);
+    border: 1.5px solid var(--clr-errors);
     color: var(--clr-errors);
     /* border-color: red; */
 }
@@ -115,15 +140,14 @@ a {
 
 .container {
     width: 30%;
-    margin: auto;
+    margin: 1rem auto;
     border-radius: 0.25rem;
     background-color: var(--clr-primary-body);
-    padding: 1rem;
+    padding: 1rem 1rem 1rem 1rem;
     font-size: 1rem;
 }
 
-.col-25 {
-    /* float: left; */
+.col-60 {
     vertical-align: top;
     text-align: left;
     width: 60%;
@@ -132,7 +156,7 @@ a {
     padding-top: 0.75rem;
 }
 
-.col-75 {
+.col-40 {
     /* float: left; */
     text-align: left;
     width: 39%;
@@ -143,7 +167,10 @@ a {
 }
 
 .div-btn-calc {
-    margin: 1.5rem 0;
+    margin: 0.5rem auto;
+    width: 95%;
+    border-top: 1px solid #999;
+    padding: 1rem 0;
 }
 
 /* ------ */
@@ -189,6 +216,10 @@ a {
     display: block;
     margin-left: 0.75rem;
     color: var(--clr-errors);
+}
+
+.missing {
+    border: 1.5px solid var(--clr-errors);
 }
 
 /* ------------------------- */
@@ -239,31 +270,6 @@ a {
     background-color: var(--clr-secondary-body-400);
 }
 
-/* Create the indicator (the dot/circle - hidden when not checked) */
-
-/* .checkmark::after {
-    content: "";
-    position: absolute;
-    display: none;
-} */
-
-/* Show the indicator (dot/circle) when checked */
-
-/* .radio-container input:checked ~ .checkmark:after {
-    display: block;
-} */
-
-/* Style the indicator (dot/circle) */
-
-/* .radio-container .checkmark:after {
-    top: 9px;
-   left: 9px;
-   width: 8px;
-   height: 8px;
-   border-radius: 50%;
-   background: white;
-} */
-
 /* ------------------------- */
 /* ------------------------- */
 
@@ -272,7 +278,7 @@ a {
 /* ------------- */
 
 .result-table {
-    width: 90%;
+    width: 95%;
     font-size: 1rem;
     margin: 1rem auto;
     border-collapse: collapse;
@@ -280,6 +286,7 @@ a {
 
 td {
     padding: 0.75rem 0.75rem;
+    text-align: left;
     /* border: 1px solid #999; */
 }
 
@@ -289,6 +296,10 @@ th {
     font-size: 1.05rem;
 }
 
+.left-col {
+    padding-left: 1.5rem;
+}
+
 .for-valore-catastale {
     margin-top: 20px;
 }
@@ -296,9 +307,11 @@ th {
 .td-amount {
     width: 40%;
     text-align: right;
+    padding-right: 1.5rem;
 }
 
 .row-total-amt {
+    font-size: 1.1rem;
     font-weight: bold;
     border-top: 1px solid #999;
 }
@@ -315,6 +328,10 @@ th {
     background-color: var(--clr-button-hover);
 }
 
+#btn-reset:hover {
+    background-color: var(--clr-button-hover);
+}
+
 @media screen and (max-width: 1600px) {
     .container {
         width: 60%;
@@ -325,7 +342,7 @@ th {
     .container {
         width: 90%;
     }
-    .col-25, .col-75, input[type=submit] {
+    .col-60, .col-40, input[type=submit] {
         width: 100%;
     }
     /* #div-results {

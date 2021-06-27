@@ -12,11 +12,55 @@
     <div class="text-left">
         <a href="../index.html" id="homepage-link">
             <h1>Tutto Tasse!</h1>
-            <p>Calcola le tue tasse. E molto altro.</p>
+            <p>Calcolo tasse (e molto altro) a portata di mano</p>
         </a>
     </div>
 </header>
 <body>
-    <h1>Calcolatore Valore Catastale</h1>
+    <div class="calculator-header">
+        <h2>Calcolatore Valore Catastale per Immobili</h2>
+    </div>
+    
+    <div class="container container-enlarged">
+        <form action="">
+            <fieldset>
+                <div class="col-40 col-40-modified">
+                    <label class="label-radio" for="tipo-abitazione">Categoria Catastale: </label>
+                </div>
+                <div class="col-60 col-60-modified">
+                    <select name="categoria-catastale" id="categoria-catastale" required>
+                        <option value="categoria-catastale-disabled" disabled selected value>-- Seleziona Categoria Catastale --</option>
+                        <option value="prima-casa">Categoria A (escluso A/10) "Prima Casa"</option>
+                        <option value="seconda-casa">Categoria A (escluso A/10) "Non Prima Casa"</option>
+                        <option value="categoria-A/10">Categoria A/10 "Uffici e studi privati"</option>
+                        <option value="categoria-B">Categoria B</option>
+                        <option value="categoria-C">Categoria C (escluso C/1)</option>
+                        <option value="categoria-C/1">Categoria C/1 "Negozi e botteghe"</option>
+                        <option value="categoria-D">Categoria D</option>
+                        <option value="categoria-E">Categoria E</option>
+                        <!-- <option value="terreno-non-edificabile">Terreno non edificabile</option>
+                        <option value="terreno-agricolo">Terreno (Imprenditori agricoli/coltivatori diretti)</option> -->
+                    </select>
+                    <span role="alert" id="categoriaCatError" aria-hidden="true"> Inserisci Categoria </span>
+                    <!-- <small>Error Message</small> -->
+                </div>
+            </fieldset>
+            <fieldset>
+                <div class="col-40 col-40-modified">
+                    <label for="rendita-catastale">Rendita Catastale €</label>
+                    <a href="#">Come ottenere rendita catastale?</a>
+                </div>
+                <div class="col-60 col-60-modified">
+                    <input type="number" name="rendita-catastale" id="rendita-catastale" placeholder="0,0 €" required>
+                    <span role="alert" id="renditaCatError" aria-hidden="true"> Input Non Valido! </span>
+                </div>
+            </fieldset>
+        </form>
+        <div class="div-btn-calc">
+            <button id="btn-calc">Calcola</button>
+        </div>
+    </div>
+
+    <script src="valore-catastale.js"></script>
 </body>
 </html>

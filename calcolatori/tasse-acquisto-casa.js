@@ -1,5 +1,4 @@
 // TODO: replace radio-button with segment control
-// TODO: add explanation (link other page) for valore catastale
 
 class Calculator {
     constructor(houseType, sellerType, amountValue) {
@@ -89,6 +88,7 @@ class Calculator {
 
     compute() {
         this.warnMissingHouseType()
+        
         if (this.amountValue > 0.0 && this.amountValue !== null) {
 
             if (this.houseType === 'prima casa' && this.sellerType === 'venditore privato') {
@@ -162,45 +162,50 @@ class Calculator {
             <table class="result-table">
                 <thead>
                     <tr>
-                        <th colspan='2'>Acquisto <span style="color:#2196F3">${calculator.houseType}</span> da <span style="color:#2196F3">${calculator.sellerType}</span>.<br>Ammontare per calcolo imposte: <span style="color:#2196F3">${calculator.amountValue} €</span></th>
+                        <th class="left-col" colspan='2'>Acquisto <span style="color:#2196F3">${calculator.houseType}</span> da <span style="color:#2196F3">${calculator.sellerType}</span>.<br>Ammontare per calcolo imposte: <span style="color:#2196F3">${calculator.amountValue} €</span></th>
                     </tr>
                     <tr id='riepilogo-imposte'>
-                        <th colspan='2'>Riepilogo imposte:</th>
+                        <th class="left-col" colspan='2'>Riepilogo imposte:</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Imposta di Registro:</td>
+                        <td class="left-col">Imposta di Registro:</td>
                         <td class="td-amount">${impostaRegistro} €</td>
                     </tr>
                     <tr>
-                        <td>Imposta Catastale:</td>
+                        <td class="left-col">Imposta Catastale:</td>
                         <td class="td-amount">${impostaCatastale} €</td>
                     </tr>
                     <tr>
-                        <td>Imposta Ipotecaria:</td>
+                        <td class="left-col">Imposta Ipotecaria:</td>
                         <td class="td-amount">${impostaIpotecaria} €</td>
                     </tr>
                     <tr>
-                        <td>IVA:</td>
+                        <td class="left-col">IVA:</td>
                         <td class="td-amount">${IVA} €</td>
                     </tr>
                     <tr class="row-total-amt">
-                        <td>Totale:</td>
+                        <td class="left-col">Totale:</td>
                         <td class="td-amount">${totaleImposte} €</td>
                     </tr>
                 </tbody>
             </table>
+            <div class="div-btn-calc">
+                <button id="btn-reset">Reset</button>
+            </div>
         `
 
         const body = document.body
         body.append(containerTableResults)
 
-        const btnReset = document.createElement('button')
-        btnReset.innerText = 'Reset'
-        btnReset.id = 'btn-reset'
+        // const btnReset = document.createElement('button')
+        // btnReset.innerText = 'Reset'
+        // btnReset.id = 'btn-reset'
 
-        containerTableResults.append(btnReset)
+        // containerTableResults.append(btnReset)
+
+        const btnReset = document.getElementById('btn-reset')
 
         btnReset.addEventListener('click', e => {
             calculator.resetCalc()
@@ -280,11 +285,11 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         inputValoreCatastale.classList.add('form-row-money')
 
         inputValoreCatastale.innerHTML = `
-                <div class="col-25">
+                <div class="col-60">
                     <label for="valore-catastale">Valore Catastale €</label>
-                    <a href='./pages/valore-catastale' target='_blank'>Come calcolo il Valore Catastale?</a>
+                    <a href='valore-catastale.html' target='_blank'>Come calcolo il Valore Catastale?</a>
                 </div>
-                <div class="col-75">
+                <div class="col-40">
                     <input type="number" name="valore-catastale" id="input-amount" min="0" required>
                     <span role="alert" id="nameError" aria-hidden="true"> Inserire Valore Catastale! </span>
                     <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>
@@ -320,10 +325,10 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         inputPrezzoAcquisto.classList.add('form-row-money')
 
         inputPrezzoAcquisto.innerHTML = `
-                <div class="col-25">
+                <div class="col-60">
                     <label for="prezzo-acquisto">Prezzo Acquisto €</label>
                 </div>
-                <div class="col-75">
+                <div class="col-40">
                     <input type="number" name="prezzo-acquisto" id="input-amount" min="0" required>
                     <span role="alert" id="nameError" aria-hidden="true"> Inserire Prezzo Acquisto! </span>
                     <span role="alert" id="inputNegative" aria-hidden="true"> Input non valido! </span>
@@ -339,8 +344,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             calculator.warnMissingHouseType()
 
             // If there was an invalid input on the price the border was red
-            const removeInvalid = document.getElementById('input-amount')
-            removeInvalid.classList.remove('invalid')
+            inputPrezzoAcquisto.classList.remove('invalid')
 
             price = parseFloat(e.target.value)
 
@@ -367,13 +371,17 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
                 <button id="btn-calc">Calcola</button>
             `
 
-        const body = document.body
+        // const body = document.body
 
-        body.append(divBtnCalc)
+        // body.append(divBtnCalc)
+
+        const container = document.getElementById('container')
+        container.append(divBtnCalc)
 
         const btnCalc = document.getElementById('btn-calc')
 
         btnCalc.addEventListener('click', e => {
+            e.preventDefault()
             calculator.compute()
         })
     }

@@ -1,0 +1,90 @@
+@import '../main.css';
+
+.container-enlarged {
+    width: 35%;
+}
+
+.col-60-modified {
+    vertical-align: middle;
+    padding-top: 0;
+    margin-top: 1.25rem;
+    position: relative;
+    /* padding-bottom: 1.25rem; */
+}
+
+.col-40-modified {
+    vertical-align: middle;
+    padding-top: 0;
+    margin-top: 1.25rem;
+}
+
+/* .col-60-modified select {
+    display: block;
+} */
+
+.col-60-modified small {
+    color: var(--clr-errors);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+#rendita-catastale {
+    width: 100%;
+    margin: 0;
+}
+
+/* ------ */
+/* ERRORS */
+/* ------ */
+
+#categoriaCatError {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#categoriaCatError.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: var(--clr-errors);
+}
+
+#renditaCatError {
+    display: none;
+    font-size: 0.8rem;
+}
+
+#renditaCatError.visible {
+    display: block;
+    margin-left: 0.75rem;
+    color: var(--clr-errors);
+}
+
+
+/* ------------- */
+/* MEDIA QUERIES */
+/* ------------- */
+
+@media screen and (max-width: 1600px) {
+    .container-enlarged {
+        width: 60%;
+    }
+}
+
+@media screen and (max-width: 850px) {
+    .container-enlarged {
+        width: 90%;
+    }
+    .col-60, .col-40, input[type=submit] {
+        width: 100%;
+    }
+    /* #div-results {
+        width: 90%;
+    } */
+}
+
+@media screen and (max-width: 352px) {
+    html, select {
+        font-size: 0.75rem;
+    }
+}
