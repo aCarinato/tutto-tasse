@@ -41,6 +41,8 @@
                         <!-- <option value="terreno-non-edificabile">Terreno non edificabile</option>
                         <option value="terreno-agricolo">Terreno (Imprenditori agricoli/coltivatori diretti)</option> -->
                     </select>
+                    <span role="alert" id="categoriaCatError" aria-hidden="true"> Inserisci Categoria </span>
+                    <!-- <small>Error Message</small> -->
                 </div>
             </fieldset>
             <fieldset>
@@ -50,6 +52,7 @@
                 </div>
                 <div class="col-60 col-60-modified">
                     <input type="number" name="rendita-catastale" id="rendita-catastale" placeholder="0,0 €" required>
+                    <span role="alert" id="renditaCatError" aria-hidden="true"> Input Non Valido! </span>
                 </div>
             </fieldset>
         </form>

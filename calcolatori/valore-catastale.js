@@ -62,17 +62,27 @@ class Calculator {
     }
 
     compute() {
-        // should check that all fields are entered
 
-        const moltiplicatore = this.setMoltiplicatoreCatastale()
-        const valoreCatastale = (this.renditaCatastale * 1.05 * moltiplicatore).toFixed(1)
+        const categoria = this.warnMissingCatCatastale()
+        console.log(categoria)
+        const rendita = this.warnMissingRenditaCat()
+        console.log(rendita)
 
-        // console.log(valoreCatastale)
+        if (categoria && rendita) {
+            const moltiplicatore = this.setMoltiplicatoreCatastale()
+            const valoreCatastale = (this.renditaCatastale * 1.05 * moltiplicatore).toFixed(1)
+    
+            this.displayResults(valoreCatastale)
+        }
 
-        this.displayResults(valoreCatastale)
     }
 
     displayResults(valoreCatastale) {
+
+        // Remove any leading zeros from input amount
+        const renditaCatastaleNoZeros = document.getElementById('rendita-catastale')
+        renditaCatastaleNoZeros.value = renditaCatastaleNoZeros.value.replace(/^[0]+/g,"")
+        // TODO: better formatting for values like 0,0022 which now is displayed like ,0222
 
         // Create results table
         const containerTableResultsExists = document.getElementById('div-results')
@@ -89,7 +99,7 @@ class Calculator {
             <table class="result-table">
                 <thead>
                     <tr>
-                        <th class="left-col" colspan='2'>Valore Catastale per immobile tipo <span style="color:#2196F3">${calculator.categoriaCatastale}</span><br>Rendita Catastale: <span style="color:#2196F3">${calculator.renditaCatastale} €</span></th>
+                        <th class="left-col" colspan='2'>Valore Catastale per immobile tipo <span style="color:#2196F3">${calculator.categoriaCatastale}</span><br>Rendita Catastale: <span style="color:#2196F3">${renditaCatastaleNoZeros.value} €</span></th>
                     </tr>
                 </thead>
                 <tbody>
@@ -120,6 +130,52 @@ class Calculator {
         })
     }
 
+    warnMissingCatCatastale() {
+
+        const selectedCategoriaCatastale = document.getElementById('categoria-catastale')
+        
+        if (this.categoriaCatastale === null) {
+            selectedCategoriaCatastale.classList.add('missing')
+
+            const categoriaCatError = document.getElementById("categoriaCatError");
+
+            categoriaCatError.classList.add("visible");
+
+            return false
+        } else {
+            selectedCategoriaCatastale.classList.remove('missing')
+
+            const categoriaCatError = document.getElementById("categoriaCatError");
+            categoriaCatError.classList.remove("visible");
+
+            return true
+        }
+    }
+
+    warnMissingRenditaCat() {
+
+        const inputRenditaCatastale = document.getElementById('rendita-catastale')
+        // inputRenditaCatastale.classList.add('invalid')
+
+        // Making sure only relevant message is displayed
+        if (this.renditaCatastale === null || isNaN(this.renditaCatastale) || this.renditaCatastale < 0.0) {
+
+            inputRenditaCatastale.classList.add('invalid')
+            const renditaCatError = document.getElementById("renditaCatError");
+            renditaCatError.classList.add("visible");
+
+            return false
+
+        } else {
+            inputRenditaCatastale.classList.remove('invalid')
+            const renditaCatError = document.getElementById("renditaCatError");
+            renditaCatError.classList.remove("visible");
+            return true
+        }
+
+
+    }
+
     // Reset all values and fields
     resetCalc() {
         const resultExists = document.getElementById('div-results')
@@ -135,8 +191,11 @@ class Calculator {
         selectedCategoriaCatastale.value = 'categoria-catastale-disabled'
         inputRenditaCatastale.value = ''
 
-        // set the amount to null
-        // calculator.setAmountValue(null)
+        // set both input parameters to null value
+        this.categoriaCatastale = null
+        this.renditaCatastale = null
+
+        // remove any possible error class from the input parameters
 
     }
 
@@ -159,10 +218,14 @@ calculator = new Calculator(null, null)
 
 selectedCategoriaCatastale.addEventListener('change', e => {
     calculator.selectCategoriaCatastale(e.target.value)
+    calculator.warnMissingCatCatastale()
 })
 
 inputRenditaCatastale.addEventListener('input', e => {
+
     calculator.setRenditaCatastale(e.target.value)
+
+    calculator.warnMissingRenditaCat()
 })
 
 btnCalc.addEventListener('click', e => {

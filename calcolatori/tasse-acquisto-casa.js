@@ -344,8 +344,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
             calculator.warnMissingHouseType()
 
             // If there was an invalid input on the price the border was red
-            const removeInvalid = document.getElementById('input-amount')
-            removeInvalid.classList.remove('invalid')
+            inputPrezzoAcquisto.classList.remove('invalid')
 
             price = parseFloat(e.target.value)
 
