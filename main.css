@@ -11,6 +11,8 @@
     --clr-button: #04AA6D;
     --clr-button-hover: #45a049;
 
+    --clr-link-hover: #480ca8;
+
     --clr-errors: red;
 
     /* FONTS */
@@ -37,16 +39,25 @@ body {
     text-align: left;
 }
 
+.link-small {
+    font-size: 0.75rem;
+}
+
 /* ----------- */
 /* MAIN HEADER */
 /* ----------- */
 
-#homepage-link {
+.primary-header {
     background-color: var(--clr-primary-header);
+}
+
+#homepage-link {
+    /* background-color: var(--clr-primary-header); */
     color: var(--clr-text);
     text-align: left;
     margin-bottom: 2.5rem;
     font-size: 1rem;
+    text-decoration: none;
 }
 
 .mainpage-link {
@@ -128,10 +139,15 @@ button {
 
 a {
     display: block;
-    font-size: 0.75rem;
+    /* font-size: 0.75rem; */
     padding: 0.25rem 0.75rem;
-    text-decoration: none;
+    /* text-decoration: none; */
     color: var(--clr-secondary-body-400);
+    width: fit-content;
+}
+
+a:hover {
+    color: var(--clr-link-hover);
 }
 
 /* ------------ */
