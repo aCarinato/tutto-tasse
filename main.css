@@ -9,8 +9,10 @@
     --clr-text: white;
 
     --clr-button: #04AA6D;
-    --clr-button-hover: #45a049;
 
+    /* Hover effects */
+    --clr-title-hover: #222c2a;
+    --clr-button-hover: #45a049;
     --clr-link-hover: #480ca8;
 
     --clr-errors: red;
@@ -41,6 +43,24 @@ body {
 
 .link-small {
     font-size: 0.75rem;
+}
+
+/* H2 */
+/* H2 Links */
+.link-h2, .link-h3 {
+    text-decoration: none;
+    color: var(--clr-title-hover);
+    padding-left: 0;
+}
+
+.link-h2:hover, .link-h3:hover  {
+    color: var(--clr-title-hover);
+}
+
+/* Paragraph */
+.link-paragraph-inline {
+    display: inline-block;
+    padding: 0;
 }
 
 /* ----------- */
