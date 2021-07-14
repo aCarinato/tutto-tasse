@@ -287,7 +287,7 @@ selectedSellerType.forEach(radio => radio.addEventListener('change', e => {
         inputValoreCatastale.innerHTML = `
                 <div class="col-60">
                     <label for="valore-catastale">Valore Catastale €</label>
-                    <a href='valore-catastale.html' target='_blank'>Come calcolo il Valore Catastale?</a>
+                    <a class='link-small' href='valore-catastale.html' target='_blank'>Come calcolo il Valore Catastale?</a>
                 </div>
                 <div class="col-40">
                     <input type="number" name="valore-catastale" id="input-amount" min="0" required>

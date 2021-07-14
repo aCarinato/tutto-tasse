@@ -64,9 +64,9 @@ class Calculator {
     compute() {
 
         const categoria = this.warnMissingCatCatastale()
-        console.log(categoria)
+        // console.log(categoria)
         const rendita = this.warnMissingRenditaCat()
-        console.log(rendita)
+        // console.log(rendita)
 
         if (categoria && rendita) {
             const moltiplicatore = this.setMoltiplicatoreCatastale()
@@ -172,7 +172,6 @@ class Calculator {
             renditaCatError.classList.remove("visible");
             return true
         }
-
 
     }
 

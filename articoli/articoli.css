@@ -1,0 +1,62 @@
+@import '../main.css';
+
+.header-article {
+    margin: auto;
+    width: 50%;
+    text-align: left;
+}
+
+.container-paragraph {
+    margin: auto;
+    width: 50%;
+    text-align: justify;
+    line-height: 1.5;
+}
+
+.table-contents {
+    text-align: left;
+    font-size: 1.05rem;
+    color: var(--clr-secondary-body-400);
+    padding-left: 1.25rem;
+}
+
+.table-contents ::marker {
+    color: var(--clr-secondary-body-400);
+}
+
+.table-contents a {
+    padding-left: 0;
+}
+
+.link-external-paragraph {
+    padding-left: 0;
+}
+
+.ul-paragragraph {
+    padding-left: 1.25rem;
+    /* list-style-position: inside; */
+}
+
+/* ------------- */
+/* MEDIA QUERIES */
+/* ------------- */
+
+@media screen and (max-width: 400px) {
+
+    #homepage-link {
+        margin: auto;
+        width: 85%;
+        padding-left: 0;
+    }
+
+    .header-article {
+        margin: auto;
+        width: 85%;
+    }
+
+    .container-paragraph {
+        width: 85%;
+        text-align: left;
+    }
+
+}
