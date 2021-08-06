@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../main.css">
+    <link rel="stylesheet" href="../articoli/articoli.css">
+    <title>Guida Interattiva Rendita Catastale</title>
+</head>
+<body>
+    <header>
+        <div class="text-left primary-header">
+            <a href="../index.html" id="homepage-link">
+                <h1>Tutto Tasse</h1>
+                <p>Guide interattive per calcolo tasse, spese e molto altro!</p>
+            </a>
+        </div>
+    </header>
+
+    <section>
+        <div class="container-paragraph">
+            <h2 id="intertive"><a class="link-h2" href="#intertive">Guida interattiva per conoscere la rendita catastale</a></h2>
+            <form id="form-digID">
+                <fieldset>
+                    <div class="col-60">
+                        <label class="label-radio">Proprietá immobile: </label>
+                    </div>
+                    <div class="col-40" id="select-proprieta">
+                        <label class="radio-container">immobile di proprietá
+                            <input type="radio" id="select-proprieta" name="select-proprieta" value="proprietario">
+                            <span class="checkmark"></span>
+                        </label>
+                        <label class="radio-container">immobile non di proprietá
+                            <input type="radio" id="select-proprieta" name="select-proprieta" value="non-proprietario">
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </section>
+
+    <script src="rendita-catastale.js"></script>
+</body>
+</html>
